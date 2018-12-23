@@ -7,8 +7,9 @@
         }
 
         function render(){
+            include '../Views/Header.php'; //header necesita los strings
 ?>
-        <form action='../Controller/Registro_Controller.php' method='POST'>
+        <form action='../Controller/Registro_Controller.php' method='POST' enctype="multipart/form-data">
         
             <label for="email"><?= $strings['Email'] ?></label>
             <input type="email" id="email" name="email">
@@ -27,14 +28,14 @@
             <label for="contraseña"><?= $strings['Contraseña'] ?></label>
             <input type="password" id="contraseña" name="contraseña">
             <label for="rol"><?= $strings['Rol'] ?></label>
-            <input type="text" name="rol">
-            <datalist id="rol">
+            <select id="rol">
                 <option value="Administrador"><?= $strings['Administrador'] ?></option>
                 <option value="Subastador"><?= $strings['Subastador'] ?></option>
                 <option value="Pujador"><?= $strings['Pujador'] ?></option>
-            </datalist>
+            </select>
         
-        <a href="../index.php"></a>
+            <a href='../index.php' class="registro"><?= $strings['Volver'] ?></a>
+			<button  class="buttonGuardar" onclick="return registrar()"><i class="material-icons" o>check_circle</i></button>
         
         </form>
 

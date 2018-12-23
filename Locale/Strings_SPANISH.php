@@ -15,7 +15,15 @@ array(
     'Rol' => 'Rol',
     'Administrador' => 'Administrador',
     'Subastador' => 'Subastador',
-    'Pujador' => 'Pujador'
+    'Pujador' => 'Pujador',
+    'Español' => 'Español',
+    'Inglés' => 'Inglés',
+    'Gallego' => 'Gallego',
+    'Registrate' => 'Registrate',
+    'login vacio' => 'login vacio',
+    'El login no existe' => 'El login no existe',
+    'La contraseña para este usuario no es correcta' => 'La contraseña para este usuario no es correcta',
+    'Volver' => 'Volver'
 
 
 
