@@ -29,20 +29,14 @@
             <label for="rol"><?= $strings['Rol'] ?></label>
             <input type="text" name="rol">
             <datalist id="rol">
-                <option value="Administrador">
-                <option value="Subastador">
-                <option value="Pujador">
+                <option value="Administrador"><?= $strings['Administrador'] ?></option>
+                <option value="Subastador"><?= $strings['Subastador'] ?></option>
+                <option value="Pujador"><?= $strings['Pujador'] ?></option>
             </datalist>
         
         <a href="../index.php"></a>
         
         </form>
-
-
-
-
-
-
 
 <?php
         }
