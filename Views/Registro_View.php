@@ -35,7 +35,7 @@
             </select>
         
             <a href='../index.php' class="registro"><?= $strings['Volver'] ?></a>
-			<button  class="buttonGuardar" onclick="return registrar()"><i class="material-icons" o>check_circle</i></button>
+			<button  class="buttonGuardar" onclick=""><i class="material-icons" o>check_circle</i></button>
         
         </form>
 
