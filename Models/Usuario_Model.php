@@ -60,6 +60,9 @@
         function getLogin(){
             return $this->login;
         }
+        function getContraseña(){
+            return $this->contraseña;
+        }
         function getRol(){
             return $this->rol;
         }
@@ -164,6 +167,37 @@
             else{
                 return 'Error eliminando';
             }
+        }
+
+        //Función que edita un usuario de la base de datos
+        function edit(){
+        
+        
+            if(isset($this->avatar['name'])){
+
+                $this->borrarDirectorio('../Files/'. $this->email .'/Pictures/');
+                $avatar = $this->avatar();
+            
+            }else{
+                $avatar = $this->avatar;
+            }
+            
+
+            $sql="UPDATE USUARIOS
+                 SET `email` = '$this->email', `dni` = '$this->dni', `direccion` = $this->direccion,`nombre` = $this->nombre
+                 ,`apellidos` = $this->apellidos, `avatar` = '$avatar', `login` = $this->login, `contraseña` = $this->contraseña, `rol` = $this->rol,`estado` = $this->estado,`loginadmin` = $this->loginadmin
+                 WHERE `login` = '$this->login'";
+
+            if(!$this->mysqli->query($sql)){
+                return "Error editando";
+            }else{
+        
+                return "Editado";
+            }
+
+
+
+            
         }
 
         //Función que borra un directorio dado y todo su contenido

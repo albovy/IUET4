@@ -23,7 +23,12 @@ array(
     'login vacio' => 'login vacio',
     'El login no existe' => 'El login no existe',
     'La contraseña para este usuario no es correcta' => 'La contraseña para este usuario no es correcta',
-    'Volver' => 'Volver'
+    'Volver' => 'Volver',
+    'Estado' => 'Estado',
+    'Email incorrecto' => 'Email incorrecto',
+    'Login incorrecto' => 'Login incorrecto',
+    'Error editando' => 'Error editando',
+    'Editado' => 'Editado'
 
 
 
