@@ -240,17 +240,17 @@
             else{
                 //Guarda cada uno de los atributos del usuario de la búsqueda y devuelve el usuario
                 $tupla = $resultado->fetch_array();
-                $this->email = $tupla['email'];
-                $this->dni = $tupla['nombre'];
-                $this->direccion = $tupla['direccion'];
-                $this->nombre = $tupla['nombre'];
-                $this->apellidos = $tupla['apellidos'];
-                $this->avatar = $tupla['avatar'];
-                $this->login = $tupla['login'];
-                $this->contraseña = $tupla['contraseña'];
-                $this->rol = $tupla['rol'];
-                $this->estado = $tupla['estado'];
-                $this->loginadmin = $tupla['loginadmin'];
+                $this->email = $tupla['EMAIL'];
+                $this->dni = $tupla['DNI'];
+                $this->direccion = $tupla['DIRECCION'];
+                $this->nombre = $tupla['NOMBRE'];
+                $this->apellidos = $tupla['APELLIDOS'];
+                $this->avatar = $tupla['AVATAR'];
+                $this->login = $tupla['LOGIN'];
+                $this->contraseña = $tupla['PASSWORD'];
+                $this->rol = $tupla['ROL'];
+                $this->estado = $tupla['ESTADO'];
+                $this->loginadmin = $tupla['LOGIN_ADMIN'];
                 return $this;
             }
         }

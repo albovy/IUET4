@@ -25,7 +25,8 @@
                                 $this->login_subastador = $login_subastador;
                                 $this->login_admin = $login_admin;
 
-
+                                include_once '../Models/Access_DB.php';
+                                $this->mysqli = ConnectDB();
                             }
 
         function getID(){
@@ -61,8 +62,9 @@
             
         function encontrarTodos(){
             $sql="SELECT * FROM SUBASTA";
-
+            
             $resultado = $this->mysqli->query($sql);
+        
             $subastas_db = $resultado->fetch_All(MYSQLI_ASSOC);
             $subastas = array();
 

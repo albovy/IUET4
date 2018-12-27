@@ -9,11 +9,11 @@ class ShowAll_Subastador_View{
         $this->render();
     }
     function render(){
-        include '../View/Header.php'; 
-        if(count($subastas) == 0){
+        include '../Views/Header.php'; 
+        if(count($this->subastas) == 0){
             ?>
-                <h1><?= $strings['No hay participaciones']?></h1>
-                <a href=""></a>
+                <h1><?= $strings['No hay subastas']?></h1>
+                <a href="../Controller/Subasta_Controller.php?action=add"><i class="material-icons tdShowIcons">create</i></a>
             <?php
         }else{
             ?>
