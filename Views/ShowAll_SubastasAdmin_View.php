@@ -18,7 +18,7 @@ class ShowAll_View{
         }else{
             ?>
             <div class="tabla">
-				<h2 class="textoForm">ShowAll</h2>
+				<h2 class="textoForm"><?= $strings['ShowAll subastas'] ?></h2>
 				<table class="table">
 				<thead>
 				

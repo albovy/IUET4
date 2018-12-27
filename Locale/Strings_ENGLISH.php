@@ -34,7 +34,10 @@ array(
     'Error de inserción' => 'Error inserting',
     'Login, Email o DNI ya existentes' => 'Login, Email or NIF already in use',
     'Información' => 'Info',
-    'No hay subastas' => 'There isn´t auctions'
+    'No hay subastas' => 'There aren´t auctions',
+    'ShowAll subastas' => 'ShowAll auctions',
+    'No hay usuarios' => 'No users',
+    'ShowAll usuarios' => 'ShowAll users'
     
 
 

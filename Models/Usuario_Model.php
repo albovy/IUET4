@@ -230,7 +230,7 @@
             //Busca al usuario por su email y guarda el resultado en la variable sql
             $sql = "SELECT * 
                     FROM USUARIO
-                    WHERE `login` = '$this->login'";
+                    WHERE `LOGIN` = '$this->login'";
 
             $resultado = $this->mysqli->query($sql);
             //Si la búsqueda del usuario no devuelve ningún resultado, se devuelve un mensaje de email incorrecto
@@ -255,4 +255,16 @@
             }
         }
 
-    }
+        function showAll(){
+            $sql = "SELECT * 
+                    FROM USUARIO";
+            $resultado = $this->mysqli->query($sql);
+            $usuarios = array();
+            while ($fila = $resultado->fetch_array(MYSQLI_ASSOC)) {
+                array_push($usuarios, new Usuario_Model($fila['EMAIL'],$fila['DNI'],$fila['DIRECCION'], $fila['NOMBRE'], $fila['APELLIDOS'], $fila['AVATAR'], $fila['LOGIN'], '', $fila['ROL'], $fila['ESTADO']));
+            }
+            return $usuarios;
+        }
+
+    } 
+?>
