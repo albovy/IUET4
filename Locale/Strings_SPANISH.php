@@ -32,7 +32,9 @@ array(
     'Usuario en espera de aceptación' => 'Usuario en espera de aceptación',
     'Registrado' => 'Registrado',
     'Error de inserción' => 'Error de inserción',
-    'Login, Email o DNI ya existentes' => 'Login, Email o DNI ya existentes'
+    'Login, Email o DNI ya existentes' => 'Login, Email o DNI ya existentes',
+    'Información' => 'Información',
+    'No hay participaciones' => 'No hay participaciones'
 
 
 

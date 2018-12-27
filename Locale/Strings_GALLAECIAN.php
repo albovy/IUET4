@@ -32,7 +32,9 @@ array(
     'Usuario en espera de aceptación' => 'Usuario en espera de aceptación',
     'Registrado' => 'Rexistrado',
     'Error de inserción' => 'Error de inserción',
-    'Login, Email o DNI ya existentes' => 'Login, Email o DNI xa existentes'
+    'Login, Email o DNI ya existentes' => 'Login, Email o DNI xa existentes',
+    'Información' => 'Información',
+    'No hay subastas' => 'Non hai subastas'
 
 
 )

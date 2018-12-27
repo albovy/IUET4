@@ -5,6 +5,7 @@ include "../Functions/Authentication.php";
 include '../Views/Edit_View.php';
 include '../Views/Login_View.php';
 include '../Views/Registro_View.php';
+include '../Views/Delete_View.php';
 include '../Models/Usuario_Model.php';
 include '../Views/MESSAGE_View.php';
 //inicio de sesion
