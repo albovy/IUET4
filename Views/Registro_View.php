@@ -9,7 +9,7 @@
         function render(){
             include '../Views/Header.php'; //header necesita los strings
 ?>
-        <form action='../Controller/Registro_Controller.php' method='POST' enctype="multipart/form-data">
+        <form action='../Controller/Usuario_Controller.php?action=register' method='POST' enctype="multipart/form-data">
         
             <label for="email"><?= $strings['Email'] ?></label>
             <input type="email" id="email" name="email">
@@ -28,7 +28,7 @@
             <label for="contraseña"><?= $strings['Contraseña'] ?></label>
             <input type="password" id="contraseña" name="contraseña">
             <label for="rol"><?= $strings['Rol'] ?></label>
-            <select id="rol">
+            <select id="rol" name="rol">
                 <option value="Administrador"><?= $strings['Administrador'] ?></option>
                 <option value="Subastador"><?= $strings['Subastador'] ?></option>
                 <option value="Pujador"><?= $strings['Pujador'] ?></option>

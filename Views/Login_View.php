@@ -19,10 +19,10 @@
 			</div>
 			<div>
 				<label><span class="req">*</span><?= $strings['Contraseña'] ?>:</label>
-				<input type="password" name="password" placeholder="<?= $strings['Contraseña']?>..">
+				<input type="password" name="contraseña" placeholder="<?= $strings['Contraseña']?>..">
 			</div>
 			
-			<a href='../Controller/Registro_Controller.php' class="registro"><?= $strings['Registrate'] ?></a>
+			<a href='../Controller/Usuario_Controller.php?action=register' class="registro"><?= $strings['Registrate'] ?></a>
             <button><i class="material-icons" o>check_circle</i></button>
             </form>
 			

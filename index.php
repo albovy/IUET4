@@ -10,7 +10,7 @@
     
     //si no ha pasado el login de forma correcta
     if(!estaAutenticado()){
-        header('Location:./Controller/Login_Controller.php');
+        header('Location:./Controller/Usuario_Controller.php');
     
     }
     //si ha pasado por el login de forma correcta 

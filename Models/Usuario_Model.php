@@ -17,9 +17,9 @@
         var $mysqli;
 
         //constructor
-        function __construct($email=null,$dni=null,$direccion=null
+        function __construct($login=null, $contraseña=null, $email=null,$dni=null,$direccion=null
                             ,$nombre=null,$apellidos=null,$avatar=null
-                            ,$login=null,$contraseña=null,$rol=null,$estado=null,$loginadmin=null){
+                            ,$rol=null,$estado=null,$loginadmin=null){
 
 
             $this->email=$email;
@@ -34,7 +34,7 @@
             $this->estado=$estado;
             $this->loginadmin=$loginadmin;
 
-            include_once '../Model/Access_DB.php';
+            include_once '../Models/Access_DB.php';
 	        $this->mysqli = ConnectDB();
 
         }
@@ -66,6 +66,7 @@
         function getRol(){
             return $this->rol;
         }
+      
         function getEstado(){
             return $this->estado;
         }
@@ -93,7 +94,11 @@
                 $tupla = $resultado->fetch_array();
                 if ($tupla['password'] == $this->password){
                     
-                    return 'true';
+                   if($tupla['estado'] == 'CREADO'){
+                       return 'true';
+                   }else{
+                       return 'Usuario en espera de aceptación';
+                   }
                 }
                 else{
                     return 'La contraseña para este usuario no es correcta';
@@ -110,7 +115,7 @@
 
             //Comprueba si el usuario ya está insertado en la base de datos
             $sql = "SELECT *
-                    FROM USUARIOS 
+                    FROM USUARIO 
                     WHERE `login` = '$this->login' OR `dni` = '$this->dni' OR `email` = '$this->email'";
 
             $resultado = $this->mysqli->query($sql);
@@ -127,9 +132,10 @@
         function register(){
             //Se guarda el avatar del usuario insertado en la variable avatar medianta la llamada a la función avatar
             $avatar = $this->avatar();
+            $this->loginadmin = !empty($this->loginadmin) ? "'$this->loginadmin'" : "NULL";
             //Se inserta el usuario en la base de datos y se guarda el resultado en la variable sql
-            $sql = "INSERT INTO USUARIOS VALUES('$this->email', '$this->dni', '$this->direccion', '$this->nombre', '$this->apellidos',
-                    '$avatar', '$this->login', '$this->contraseña', '$this->rol', '$this->estado', '$this->loginadmin')";
+            $sql = "INSERT INTO USUARIO VALUES('$this->login', '$this->contraseña', '$this->email', '$this->dni', '$this->direccion', '$this->nombre', '$this->apellidos',
+                    '$avatar', '$this->rol', '$this->estado', $this->loginadmin)";
             //Se comprueba si se ha insertado correctamente el usuario y devuelve un mensaje con el resultado
             if($this->mysqli->query($sql)){
                 return 'Registrado';
@@ -157,8 +163,8 @@
 
             $dirAvatar = '../Files/'. $this->email .'/Pictures/';
 
-            $sql = "DELETE FROM USUARIOS
-                    WHERE `email` = '$this->email' OR `dni`= '$this->dni'";
+            $sql = "DELETE FROM USUARIO
+                    WHERE `login` = '$this->login' OR `dni`= '$this->dni'";
 
             if($this->mysqli->query($sql)){
                 $this->borrarDirectorio($dirAvatar);
@@ -184,8 +190,8 @@
             
 
             $sql="UPDATE USUARIOS
-                 SET `email` = '$this->email', `dni` = '$this->dni', `direccion` = $this->direccion,`nombre` = $this->nombre
-                 ,`apellidos` = $this->apellidos, `avatar` = '$avatar', `login` = $this->login, `contraseña` = $this->contraseña, `rol` = $this->rol,`estado` = $this->estado,`loginadmin` = $this->loginadmin
+                 SET `login` = $this->login,  `contraseña` = $this->contraseña, `email` = '$this->email', `dni` = '$this->dni', `direccion` = $this->direccion,`nombre` = $this->nombre
+                 ,`apellidos` = $this->apellidos, `avatar` = '$avatar'
                  WHERE `login` = '$this->login'";
 
             if(!$this->mysqli->query($sql)){
@@ -219,16 +225,16 @@
         }
 
         //Función que busca un usuario dado su email
-        function findByEmail(){
+        function encontrarPorLogin(){
             //Busca al usuario por su email y guarda el resultado en la variable sql
             $sql = "SELECT * 
-                    FROM USUARIOS
-                    WHERE `email` = '$this->email'";
+                    FROM USUARIO
+                    WHERE `login` = '$this->login'";
 
             $resultado = $this->mysqli->query($sql);
             //Si la búsqueda del usuario no devuelve ningún resultado, se devuelve un mensaje de email incorrecto
             if($resultado->num_rows == 0){
-                return 'Email incorrecto';
+                return 'Login incorrecto';
             }
             else{
                 //Guarda cada uno de los atributos del usuario de la búsqueda y devuelve el usuario

@@ -7,7 +7,7 @@
 
 function ConnectDB()
 {
-    $mysqli = new mysqli("localhost", 'iu2018', 'pass2018' , 'IU2018');
+    $mysqli = new mysqli("localhost", 'SUBASTA', 'pass2018' , 'SUBASTA');
     	
 	if ($mysqli->connect_errno) {
 		include './MESSAGE_View.php';

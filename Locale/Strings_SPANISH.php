@@ -28,7 +28,11 @@ array(
     'Email incorrecto' => 'Email incorrecto',
     'Login incorrecto' => 'Login incorrecto',
     'Error editando' => 'Error editando',
-    'Editado' => 'Editado'
+    'Editado' => 'Editado',
+    'Usuario en espera de aceptación' => 'Usuario en espera de aceptación',
+    'Registrado' => 'Registrado',
+    'Error de inserción' => 'Error de inserción',
+    'Login, Email o DNI ya existentes' => 'Login, Email o DNI ya existentes'
 
 
 

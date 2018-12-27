@@ -18,7 +18,7 @@
             include '../Views/Header.php'; 
 ?>
             
-			<form method='POST' action='../Controller/Edit_Controller.php?login=<?=$this->usuario->getLogin()?>' enctype="multipart/form-data">
+			<form method='POST' action='../Controller/Usuario_Controller.php?action=edit&login=<?=$this->usuario->getLogin()?>' enctype="multipart/form-data">
 			
 				<label><?= $strings['Email'] ?></label>
 				<input type="email" id="emailEdit" name="email" value="<?=$this->usuario->getEmail()?>" maxlength="50" size=50>
@@ -48,17 +48,7 @@
 				<input type="password" id="contraseñaEdit" name="contraseña"  value="<?=$this->usuario->getContraseña()?>" maxlength="30" 
 				size="30">
 
-				<label><?= $strings['Rol'] ?></label>
-				<input type="text" id="rolEdit" name="rol"  value="<?=$this->usuario->getRol()?>" maxlength="20" 
-				size="20">
-
-				<label><?= $strings['Estado'] ?></label>
-				<input type="text" id="estadoEdit" name="estado"  value="<?=$this->usuario->getEstado()?>" maxlength="30" 
-				size="30">
-
-				<label><?= $strings['Administrador'] ?></label>
-				<input type="text" id="adminEdit" name="admin"  value="<?=$this->usuario->getAdmin()?>" maxlength="30" 
-				size="30">
+				
 
 
 			
