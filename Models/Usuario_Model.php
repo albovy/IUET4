@@ -76,10 +76,11 @@
         function login(){
 
             $sql = "SELECT *
-                    FROM USUARIOS
+                    FROM USUARIO
                     WHERE (
                         (login = '$this->login') 
                     )";
+                   
 
             if(!isset($this->login)){
                 return 'login vacio';
@@ -92,9 +93,9 @@
             else{
                 
                 $tupla = $resultado->fetch_array();
-                if ($tupla['password'] == $this->password){
+                if ($tupla['PASSWORD'] == $this->contraseña){
                     
-                   if($tupla['estado'] == 'CREADO'){
+                   if($tupla['ESTADO'] == 'CREADO'){
                        return 'true';
                    }else{
                        return 'Usuario en espera de aceptación';
@@ -147,8 +148,8 @@
 
         //Función que devuelve el avatar de $this y se crea el directorio del usuario en caso de no existir, guardando el avatar en ese directorio
         function avatar(){
-            $picture = '../Files/'. $this->email .'/Pictures/'. $this->avatar['name'];
-            $directorio = '../Files/'. $this->email .'/Pictures/';
+            $picture = '../Files/'. $this->email .'/Avatar/'. $this->avatar['name'];
+            $directorio = '../Files/'. $this->email .'/Avatar/';
             //Si el directorio no existe, se crea
             if(!file_exists($directorio)){
                 mkdir($directorio,0777,true);
@@ -161,7 +162,7 @@
         //Función que borra un usuario de la base de datos, borrando el directorio en el que se guardaba su avatar
         function delete(){
 
-            $dirAvatar = '../Files/'. $this->email .'/Pictures/';
+            $dirAvatar = '../Files/'. $this->email .'/Avatar/';
 
             $sql = "DELETE FROM USUARIO
                     WHERE `login` = '$this->login' OR `dni`= '$this->dni'";
@@ -181,7 +182,7 @@
         
             if(isset($this->avatar['name'])){
 
-                $this->borrarDirectorio('../Files/'. $this->email .'/Pictures/');
+                $this->borrarDirectorio('../Files/'. $this->email .'/Avatar/');
                 $avatar = $this->avatar();
             
             }else{

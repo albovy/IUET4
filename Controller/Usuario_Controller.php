@@ -33,7 +33,7 @@ switch($action){
             }else{
                 //si no viene de formulario
                 if(!$_POST){
-                    new Register();
+                    new Register($admin->getRol());
                 }else{
                     //creamos el usuario que nos meten por el formulario
                     $registro = new Usuario_Model($_POST['login'], $_POST['contraseña'], $_POST['email'], $_POST['DNI'], $_POST['direccion'], $_POST['nombre'],
@@ -118,8 +118,9 @@ switch($action){
         if(!$_POST){
             new Login();
         }else{
-            $usuario = new Usuario_Model($_POST['login'],$_POST['login']);
+            $usuario = new Usuario_Model($_POST['login'],$_POST['contraseña']);
             $respuesta = $usuario->login();
+            
 
             if($respuesta == 'true'){
                 $_SESSION['login'] = $_POST['login'];
@@ -127,11 +128,42 @@ switch($action){
             }else{
                 new Message($respuesta, '../index.php');
             }
+            
 
         }
     break;
+    //funcion admin
+    case 'delete':
+        if(!estaAutenticado()){
+            header('Location:../index.php');
+        }
+        //miramos si es admin
+        $admin = new Usuario_Model($_SESSION['login']);
+        $admin = $admin->encontrarPorLogin();
 
-    //funcion
+        if($admin->getRol()!= "ADMINISTRADOR"){
+            header('Location:../index.php');
+        }else{
+            //miramos en la url
+            if(!isset($_GET['login'])){
+                new Message('Login incorrecto','../index.php');
+            }else{
+                $borrar = new Usuario_Model($_GET['login']);
+                $borrar = $borrar->encontrarPorLogin();
+                if($editar == 'Login incorrecto'){
+                    new Message($editar,'../index.php');
+                }else{
+                    $borrar->delete();
+                    new Message($respuesta, '../index.php');
+                }
+            }
+        }
+
+        break;
+    //funciona admin
+    case 'listUsuarios':
+        
+
 
 
 

@@ -12,7 +12,7 @@
 
 ?>
             
-            <form method='POST' action='../Controller/Login_Controller.php' >
+            <form method='POST' action='../Controller/Usuario_Controller.php' >
             <div>
 				<label><span class="req">*</span><?= $strings['Login'] ?>:</label>
 				<input type="text"  name="login" placeholder="<?= $strings['Login']?>..">

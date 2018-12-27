@@ -15,7 +15,7 @@
     }
     //si ha pasado por el login de forma correcta 
     else{
-        
+        header('Location:./Controller/Subastas_Controller.php');
     }
     
     

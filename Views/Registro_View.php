@@ -1,8 +1,9 @@
 <?php
 
     class Register{
-
-        function __construct(){
+        var $rol;
+        function __construct($rol=null){
+            $this->rol = $rol;
             $this->render();
         }
 
@@ -29,7 +30,12 @@
             <input type="password" id="contraseña" name="contraseña">
             <label for="rol"><?= $strings['Rol'] ?></label>
             <select id="rol" name="rol">
+            <?php if($this->rol == 'ADMINISTRADOR'){
+                ?>
                 <option value="Administrador"><?= $strings['Administrador'] ?></option>
+                <?php
+                }
+                ?>
                 <option value="Subastador"><?= $strings['Subastador'] ?></option>
                 <option value="Pujador"><?= $strings['Pujador'] ?></option>
             </select>
