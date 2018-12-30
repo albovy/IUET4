@@ -37,7 +37,8 @@ array(
     'No hay subastas' => 'There aren´t auctions',
     'ShowAll subastas' => 'ShowAll auctions',
     'No hay usuarios' => 'No users',
-    'ShowAll usuarios' => 'ShowAll users'
+    'ShowAll usuarios' => 'ShowAll users',
+    'Borrado' => 'Deleted'
     
 
 

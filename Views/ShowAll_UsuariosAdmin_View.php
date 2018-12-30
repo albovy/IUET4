@@ -37,7 +37,7 @@ class ShowAll_Usuarios_View{
 					foreach($this->usuarios as $usuario){
 						?>
 						<tr>
-						<td class="tdShowAll"></td>
+						
 						<td class="tdShowAll"><?= $usuario->getNombre() ?></td>
 						<td class="tdShowAll"><?= $usuario->getApellidos() ?></td>
                         <td class="tdShowAll"><?= $usuario->getLogin() ?></td>
@@ -51,9 +51,9 @@ class ShowAll_Usuarios_View{
                         <?php
                             }
                         ?>
-                        <a href="../Controller/Usuario_Controller.php?action=edit&id=<?=$usuario->getLogin()?>"><i class="material-icons tdShowIcons">create</i></a>
-						<a href="../Controller/Usuario_Controller.php?action=showcurrent&id=<?=$usuario->getLogin()?>"><i class="material-icons tdShowIcons">visibility</i></a>
-						<a href="../Controller/Usuario_Controller.php?action=delete&id=<?=$usuario->getLogin()?>"><i class="material-icons tdShowIcons">delete</i></a>
+                        <a href="../Controller/Usuario_Controller.php?action=edit&login=<?=$usuario->getLogin()?>"><i class="material-icons tdShowIcons">create</i></a>
+						<a href="../Controller/Usuario_Controller.php?action=showcurrent&login=<?=$usuario->getLogin()?>"><i class="material-icons tdShowIcons">visibility</i></a>
+						<a href="../Controller/Usuario_Controller.php?action=delete&login=<?=$usuario->getLogin()?>"><i class="material-icons tdShowIcons">delete</i></a>
                         </td>
 						<tr>
 <?php

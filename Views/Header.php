@@ -37,7 +37,19 @@
 				
                 <button role="link" onclick="window.location='../Functions/Desconectar.php'"><i class="material-icons">power_settings_new</i></button>
                 <a href="" class="enlaceHead"><i class="material-icons enlaceIconUser">person</i><?php echo $_SESSION['login']; ?></a>
+
+
             <?php
+				switch($_SESSION['rol']){
+					case 'ADMINISTRADOR':
+						?>
+						<a href="../Controller/Usuario_Controller.php?action=listUsuarios">Listar Usuarios</a>
+						<?php
+					break;
+
+					default:
+					break;
+				}
             }
             ?>
 			

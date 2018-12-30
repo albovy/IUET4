@@ -221,7 +221,7 @@
                 }
             }
             //Finalmente, borra el directorio original que se pasó como argumento
-            rmdir($ruta);
+            rmdir($directorio);
             return;
         }
 
@@ -261,7 +261,7 @@
             $resultado = $this->mysqli->query($sql);
             $usuarios = array();
             while ($fila = $resultado->fetch_array(MYSQLI_ASSOC)) {
-                array_push($usuarios, new Usuario_Model($fila['EMAIL'],$fila['DNI'],$fila['DIRECCION'], $fila['NOMBRE'], $fila['APELLIDOS'], $fila['AVATAR'], $fila['LOGIN'], '', $fila['ROL'], $fila['ESTADO']));
+                array_push($usuarios, new Usuario_Model($fila['LOGIN'],$fila['PASSWORD'],$fila['EMAIL'],$fila['DNI'],$fila['DIRECCION'], $fila['NOMBRE'], $fila['APELLIDOS'], $fila['AVATAR'], $fila['ROL'], $fila['ESTADO'],$fila['LOGIN_ADMIN']));
             }
             return $usuarios;
         }
