@@ -12,8 +12,8 @@
 
         var $mysqli;
 
-        function __construct($login_subastador=null,$id=null,$tipo=null,$informacion=null,$minIncremento=null,$fech_inicio=null
-                            ,$fech_fin=null,$estado=null,$login_admin=null){
+        function __construct($id=null,$tipo=null,$informacion=null,$minIncremento=null,$fech_inicio=null
+                            ,$fech_fin=null,$estado=null,$login_subastador=null,$login_admin=null){
 
                                 $this->id = $id;
                                 $this->tipo = $tipo;
@@ -58,6 +58,28 @@
             return $this->login_admin;
         }
 
+        function encontrarPorId(){
+            $sql = "SELECT * FROM SUBASTA WHERE ID = '$this->id'";
+
+            $resultado = $this->mysqli->query($sql);
+            if$resultado->num_rows == 0){
+                return 'id incorrecto':
+            }else{
+                $tupla = $resultado->fetch_array();
+                $this->id = $tupla['ID'];
+                $this->tipo = $tupla['TIPO'];
+                $this->informacion = $tupla['INFORMACION'];
+                $this->minIncremento = $tupla['INCREMENTO'];
+                $this->fech_inicio = $tupla['FECH_INICIO'];
+                $this->fech_fin = $tupla['FECH_FIN'];
+                $this->estado = $tupla['ESTADO'];
+                $this->login_subastador = $tupla['LOGIN_SUBASTADOR'];
+                $this->login_admin = $tupla['LOGIN_ADMIN']
+                
+                return $this;
+            }
+        }
+
 
             
         function encontrarTodos(){
@@ -69,8 +91,8 @@
             $subastas = array();
 
             foreach($subastas_db as $sub){
-                array_push($subastas,new Subasta_Model($sub['LOGIN_SUBASTADOR'],$sub['ID'],$sub['TIPO'],$sub['INFORMACION'],$sub['INCREMENTO']
-                            ,$sub['FECH_INICIO'],$sub['FECH_FIN'],$sub['ESTADO'],$sub['LOGIN_ADMIN']));
+                array_push($subastas,new Subasta_Model($sub['ID'],$sub['TIPO'],$sub['INFORMACION'],$sub['INCREMENTO']
+                            ,$sub['FECH_INICIO'],$sub['FECH_FIN'],$sub['ESTADO'],$sub['LOGIN_SUBASTADOR'],$sub['LOGIN_ADMIN']));
             }
             
             return $subastas;
@@ -83,8 +105,8 @@
             $subastas = array();
 
             foreach($subastas_db as $sub){
-                array_push($subastas,new Subasta_Model($sub['LOGIN_SUBASTADOR'],$sub['ID'],$sub['TIPO'],$sub['INFORMACION'],$sub['INCREMENTO']
-                            ,$sub['FECH_INICIO'],$sub['FECH_FIN'],$sub['ESTADO'],$sub['LOGIN_ADMIN']));
+                array_push($subastas,new Subasta_Model($sub['ID'],$sub['TIPO'],$sub['INFORMACION'],$sub['INCREMENTO']
+                            ,$sub['FECH_INICIO'],$sub['FECH_FIN'],$sub['ESTADO'],$sub['LOGIN_SUBASTADOR'],$sub['LOGIN_ADMIN']));
             }
             
             return $subastas;
