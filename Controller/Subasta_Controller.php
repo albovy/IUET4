@@ -7,6 +7,7 @@ include '../Models/Subasta_Model.php';
 include '../Views/ShowAll_SubastasAdmin_View.php';
 include '../Views/ShowAll_SubastasSubastador_View.php';
 include '../Views/MESSAGE_View.php';
+include '../Views/Add_Subastas_View.php';
 
 
 //inicio de sesion
@@ -28,21 +29,27 @@ switch($action){
 
     //Pueden añadir o subastador o administrador
     case 'add':
+     $admin = new Usuario_Model($_SESSION['login']);
+            //encontramos al admin por el login
+            $admin = $admin->encontrarPorLogin();
         if($_SESSION['rol'] == 'PUJADOR'){
             header('Location:../index.php');
 
         }
+       
         if($_SESSION['rol'] == 'ADMINISTRADOR'){
-            if(!$_POST){
-                //VISTA AÑADIR SUBASTA
+            header('Location:../index.php');
             }else{
-                //CONTROLADOR EL ESTADO DE LA PUJA TIENE Q SER ACEPTADA O COMO SEA EN LA BASE DE DATOS Y EL LOGIN DEL ADMIN QUE AUTORIZA
-            }
-        }else{
             if(!$_POST){
-                //VISTA AÑADIR SUBASTA
+                new Add_Subastas_View();
             }else{
-                //Controlador el estado de la puja pendiente y el admin nulo
+                //Controlador el estado de la subasta pendiente y el admin nulo
+                $registro = new Subasta_Model(NULL, $_POST['tipo'], $_FILES['informacion'], $_POST['incremento'], 
+                    $_POST['fech_inicio'], $_POST['fech_fin'], 'PENDIENTE', $admin->getLogin(),NULL);
+
+                $respuesta = $registro ->add();
+                new Message($respuesta, '../index.php');
+
             }
         }
 

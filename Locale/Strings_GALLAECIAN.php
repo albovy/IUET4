@@ -40,7 +40,15 @@ array(
     'ShowAll usuarios' => 'ShowAll usuarios',
     'Borrado' => 'Borrado',
     'id incorrecto' => 'id incorrecto',
-    'No puedes editar' => 'Non podes editar'
+    'No puedes editar' => 'Non podes editar',
+    'Tipo de subasta' => 'Tipo de subasta',
+    '-selecciona-' => '-selecciona-',
+    'Ciega' => 'Cega',
+    'No ciega' => 'Non cega',
+    'Incremento mínimo' => 'Incremento mínimo',
+    'Fecha inicio' => 'Data inicio',
+    'Fecha fin' => 'Data fin',
+    'Añadida' => 'Engadida'
 
 
 )
