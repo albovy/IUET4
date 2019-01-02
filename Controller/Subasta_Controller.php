@@ -5,6 +5,7 @@ include "../Functions/Authentication.php";
 include '../Models/Usuario_Model.php';
 include '../Models/Subasta_Model.php';
 include '../Views/ShowAll_SubastasAdmin_View.php';
+include '../Views/ShowAll_SubastasSubastador_View.php';
 include '../Views/MESSAGE_View.php';
 
 

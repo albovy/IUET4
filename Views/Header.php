@@ -53,6 +53,7 @@
 						<a href="../Controller/Subasta_Controller.php?action=add">Crear Subasta</a>
 						<a href="../Controller/Subasta_Controller.php">Tus subastas</a>
 						<?php
+					break;
 					default:
 						?>
 						<a href="../Controller/Subasta_Controller.php">Pujar</a>

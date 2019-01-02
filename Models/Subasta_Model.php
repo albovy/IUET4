@@ -62,8 +62,8 @@
             $sql = "SELECT * FROM SUBASTA WHERE ID = '$this->id'";
 
             $resultado = $this->mysqli->query($sql);
-            if$resultado->num_rows == 0){
-                return 'id incorrecto':
+            if($resultado->num_rows == 0){
+                return 'id incorrecto';
             }else{
                 $tupla = $resultado->fetch_array();
                 $this->id = $tupla['ID'];
@@ -74,7 +74,7 @@
                 $this->fech_fin = $tupla['FECH_FIN'];
                 $this->estado = $tupla['ESTADO'];
                 $this->login_subastador = $tupla['LOGIN_SUBASTADOR'];
-                $this->login_admin = $tupla['LOGIN_ADMIN']
+                $this->login_admin = $tupla['LOGIN_ADMIN'];
                 
                 return $this;
             }
