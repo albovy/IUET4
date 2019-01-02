@@ -165,7 +165,7 @@
             $dirAvatar = '../Files/'. $this->email .'/Avatar/';
 
             $sql = "DELETE FROM USUARIO
-                    WHERE `login` = '$this->login' OR `dni`= '$this->dni'";
+                    WHERE `LOGIN` = '$this->login' OR `dni`= '$this->dni'";
 
             if($this->mysqli->query($sql)){
                 $this->borrarDirectorio($dirAvatar);
@@ -190,10 +190,11 @@
             }
             
 
-            $sql="UPDATE USUARIOS
-                 SET `login` = $this->login,  `contraseña` = $this->contraseña, `email` = '$this->email', `dni` = '$this->dni', `direccion` = $this->direccion,`nombre` = $this->nombre
-                 ,`apellidos` = $this->apellidos, `avatar` = '$avatar'
-                 WHERE `login` = '$this->login'";
+            $sql="UPDATE USUARIO
+                 SET `PASSWORD` = '$this->contraseña', `EMAIL` = '$this->email', `DNI` = '$this->dni', `DIRECCION` = '$this->direccion',`NOMBRE` = '$this->nombre'
+                 ,`APELLIDOS` = '$this->apellidos', `AVATAR` = '$avatar'
+                 WHERE `LOGIN` = '$this->login'";
+                 var_dump($sql);
 
             if(!$this->mysqli->query($sql)){
                 return "Error editando";

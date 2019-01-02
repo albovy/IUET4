@@ -40,9 +40,6 @@
 				<label><?= $strings['Avatar'] ?></label>
 				<input type="file" id="avatarEdit" name="avatar" maxlength="50" size=50>
 			
-				<label><?= $strings['Login'] ?></label>
-				<input type="text" id="loginEdit" name="login"  disabled value="<?=$this->usuario->getLogin()?>" maxlength="30" 
-				size="30">
 
 				<label><?= $strings['Contraseña'] ?></label>
 				<input type="password" id="contraseñaEdit" name="contraseña"  value="<?=$this->usuario->getContraseña()?>" maxlength="30" 

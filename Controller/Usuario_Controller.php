@@ -104,11 +104,14 @@ switch($action){
                                 $_POST['apellidos'], $_FILES['avatar']['name']);
                         }
                         //modelop
-                        $respuesta = $editar->edit();
+                        
+                        $respuesta = $usuario->edit();
                         new Message($respuesta,'../index.php');
                     }
                 }
 
+            }else{
+                new Message('No puedes editar','../index.php');
             }
             
         }
