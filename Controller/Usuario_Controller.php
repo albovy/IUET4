@@ -6,7 +6,9 @@ include '../Views/Edit_View.php';
 include '../Views/Login_View.php';
 include '../Views/Registro_View.php';
 include '../Views/Delete_View.php';
+include '../Views/ShowAll_UsuariosAdmin_View.php';
 include '../Models/Usuario_Model.php';
+
 include '../Views/MESSAGE_View.php';
 //inicio de sesion
 session_start();
@@ -102,11 +104,14 @@ switch($action){
                                 $_POST['apellidos'], $_FILES['avatar']['name']);
                         }
                         //modelop
-                        $respuesta = $editar->edit();
+                        
+                        $respuesta = $usuario->edit();
                         new Message($respuesta,'../index.php');
                     }
                 }
 
+            }else{
+                new Message('No puedes editar','../index.php');
             }
             
         }
@@ -125,6 +130,10 @@ switch($action){
 
             if($respuesta == 'true'){
                 $_SESSION['login'] = $_POST['login'];
+                $usuarioLogueado = new Usuario_Model($_SESSION['login']);
+                $usuarioLogueado = $usuarioLogueado->encontrarPorLogin();
+                $_SESSION['rol'] = $usuarioLogueado->getRol();
+
                 header('Location:../index.php');
             }else{
                 new Message($respuesta, '../index.php');
@@ -151,11 +160,11 @@ switch($action){
             }else{
                 $borrar = new Usuario_Model($_GET['login']);
                 $borrar = $borrar->encontrarPorLogin();
-                if($editar == 'Login incorrecto'){
-                    new Message($editar,'../index.php');
+                if($borrar == 'Login incorrecto'){
+                    new Message($borrar,'../index.php');
                 }else{
                     $borrar->delete();
-                    new Message($respuesta, '../index.php');
+                    new Message('Borrado', '../index.php');
                 }
             }
         }
@@ -163,6 +172,22 @@ switch($action){
         break;
     //funciona admin
     case 'listUsuarios':
+        if(!estaAutenticado()){
+            header('Location:../index.php');
+        }
+        $admin = new Usuario_Model($_SESSION['login']);
+        $admin = $admin->encontrarPorLogin();
+
+        if($_SESSION['rol'] != "ADMINISTRADOR"){
+            header('Location:../index.php');
+        }else{
+            $usuarios = new Usuario_Model();
+            $usuarios = $usuarios->showAll();
+            new ShowAll_Usuarios_View($usuarios);
+        }
+
+
+        
         
 
 

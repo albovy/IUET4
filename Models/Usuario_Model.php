@@ -165,7 +165,7 @@
             $dirAvatar = '../Files/'. $this->email .'/Avatar/';
 
             $sql = "DELETE FROM USUARIO
-                    WHERE `login` = '$this->login' OR `dni`= '$this->dni'";
+                    WHERE `LOGIN` = '$this->login' OR `dni`= '$this->dni'";
 
             if($this->mysqli->query($sql)){
                 $this->borrarDirectorio($dirAvatar);
@@ -190,10 +190,11 @@
             }
             
 
-            $sql="UPDATE USUARIOS
-                 SET `login` = $this->login,  `contraseña` = $this->contraseña, `email` = '$this->email', `dni` = '$this->dni', `direccion` = $this->direccion,`nombre` = $this->nombre
-                 ,`apellidos` = $this->apellidos, `avatar` = '$avatar'
-                 WHERE `login` = '$this->login'";
+            $sql="UPDATE USUARIO
+                 SET `PASSWORD` = '$this->contraseña', `EMAIL` = '$this->email', `DNI` = '$this->dni', `DIRECCION` = '$this->direccion',`NOMBRE` = '$this->nombre'
+                 ,`APELLIDOS` = '$this->apellidos', `AVATAR` = '$avatar'
+                 WHERE `LOGIN` = '$this->login'";
+                 var_dump($sql);
 
             if(!$this->mysqli->query($sql)){
                 return "Error editando";
@@ -221,7 +222,7 @@
                 }
             }
             //Finalmente, borra el directorio original que se pasó como argumento
-            rmdir($ruta);
+            rmdir($directorio);
             return;
         }
 
@@ -230,7 +231,7 @@
             //Busca al usuario por su email y guarda el resultado en la variable sql
             $sql = "SELECT * 
                     FROM USUARIO
-                    WHERE `login` = '$this->login'";
+                    WHERE `LOGIN` = '$this->login'";
 
             $resultado = $this->mysqli->query($sql);
             //Si la búsqueda del usuario no devuelve ningún resultado, se devuelve un mensaje de email incorrecto
@@ -240,19 +241,31 @@
             else{
                 //Guarda cada uno de los atributos del usuario de la búsqueda y devuelve el usuario
                 $tupla = $resultado->fetch_array();
-                $this->email = $tupla['email'];
-                $this->dni = $tupla['nombre'];
-                $this->direccion = $tupla['direccion'];
-                $this->nombre = $tupla['nombre'];
-                $this->apellidos = $tupla['apellidos'];
-                $this->avatar = $tupla['avatar'];
-                $this->login = $tupla['login'];
-                $this->contraseña = $tupla['contraseña'];
-                $this->rol = $tupla['rol'];
-                $this->estado = $tupla['estado'];
-                $this->loginadmin = $tupla['loginadmin'];
+                $this->email = $tupla['EMAIL'];
+                $this->dni = $tupla['DNI'];
+                $this->direccion = $tupla['DIRECCION'];
+                $this->nombre = $tupla['NOMBRE'];
+                $this->apellidos = $tupla['APELLIDOS'];
+                $this->avatar = $tupla['AVATAR'];
+                $this->login = $tupla['LOGIN'];
+                $this->contraseña = $tupla['PASSWORD'];
+                $this->rol = $tupla['ROL'];
+                $this->estado = $tupla['ESTADO'];
+                $this->loginadmin = $tupla['LOGIN_ADMIN'];
                 return $this;
             }
         }
 
-    }
+        function showAll(){
+            $sql = "SELECT * 
+                    FROM USUARIO";
+            $resultado = $this->mysqli->query($sql);
+            $usuarios = array();
+            while ($fila = $resultado->fetch_array(MYSQLI_ASSOC)) {
+                array_push($usuarios, new Usuario_Model($fila['LOGIN'],$fila['PASSWORD'],$fila['EMAIL'],$fila['DNI'],$fila['DIRECCION'], $fila['NOMBRE'], $fila['APELLIDOS'], $fila['AVATAR'], $fila['ROL'], $fila['ESTADO'],$fila['LOGIN_ADMIN']));
+            }
+            return $usuarios;
+        }
+
+    } 
+?>

@@ -9,16 +9,16 @@ class ShowAll_View{
         $this->render();
     }
     function render(){
-        include '../View/Header.php'; 
-        if(count($subastas) == 0){
+        include '../Views/Header.php'; 
+        if(count($this->subastas) == 0){
             ?>
-                <h1><?= $strings['No hay participaciones']?></h1>
-                <a href="../Controller/Subasta_Controller.php?action=add"><i class="material-icons tdShowIcons">create</i></a>
+                <h1><?= $strings['No hay subastas']?></h1>
+                
             <?php
         }else{
             ?>
             <div class="tabla">
-				<h2 class="textoForm">ShowAll</h2>
+				<h2 class="textoForm"><?= $strings['ShowAll subastas'] ?></h2>
 				<table class="table">
 				<thead>
 				

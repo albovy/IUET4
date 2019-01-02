@@ -36,8 +36,30 @@
                 ?>
 				
                 <button role="link" onclick="window.location='../Functions/Desconectar.php'"><i class="material-icons">power_settings_new</i></button>
-                <a href="" class="enlaceHead"><i class="material-icons enlaceIconUser">person</i><?php echo $_SESSION['login']; ?></a>
+                <a href="../Controller/Usuario_Controller.php?action=edit&login=<?=$_SESSION['login']?>" class="enlaceHead"><i class="material-icons enlaceIconUser">person</i><?php echo $_SESSION['login']; ?></a>
+
+
             <?php
+				switch($_SESSION['rol']){
+					case 'ADMINISTRADOR':
+						?>
+						<a href="../Controller/Usuario_Controller.php?action=listUsuarios">Listar Usuarios</a>
+						<a href="../Controller/Subasta_Controller.php">Gestionar subastas</a>
+						<?php
+					break;
+
+					case 'SUBASTADOR':
+						?>
+						<a href="../Controller/Subasta_Controller.php?action=add">Crear Subasta</a>
+						<a href="../Controller/Subasta_Controller.php">Tus subastas</a>
+						<?php
+					break;
+					default:
+						?>
+						<a href="../Controller/Subasta_Controller.php">Pujar</a>
+						<?php
+					break;
+				}
             }
             ?>
 			

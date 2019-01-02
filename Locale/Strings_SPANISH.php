@@ -34,7 +34,13 @@ array(
     'Error de inserción' => 'Error de inserción',
     'Login, Email o DNI ya existentes' => 'Login, Email o DNI ya existentes',
     'Información' => 'Información',
-    'No hay participaciones' => 'No hay participaciones'
+    'No hay subastas' => 'No hay subastas',
+    'ShowAll subastas' => 'ShowAll subastas',
+    'No hay usuarios' => 'No hay usuarios',
+    'ShowAll usuarios' => 'ShowAll usuarios',
+    'Borrado' => 'Borrado',
+    'id incorrecto' => 'id incorrecto',
+    'No puedes editar' => 'No puedes editar'
 
 
 
