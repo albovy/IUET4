@@ -44,10 +44,19 @@
 					case 'ADMINISTRADOR':
 						?>
 						<a href="../Controller/Usuario_Controller.php?action=listUsuarios">Listar Usuarios</a>
+						<a href="../Controller/Subasta_Controller.php">Gestionar subastas</a>
 						<?php
 					break;
 
+					case 'SUBASTADOR':
+						?>
+						<a href="../Controller/Subasta_Controller.php?action=add">Crear Subasta</a>
+						<a href="../Controller/Subasta_Controller.php">Tus subastas</a>
+						<?php
 					default:
+						?>
+						<a href="../Controller/Subasta_Controller.php">Pujar</a>
+						<?php
 					break;
 				}
             }
