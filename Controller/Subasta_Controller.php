@@ -53,7 +53,7 @@ switch($action){
             header('Location:../index.php');
         }
         if(!isset($_GET['id'])){
-            //está sin traducir
+            
             new Message('id incorrecto', '../index.php');
         }else{
            $subasta = new Subasta_Model($_GET['id']);
@@ -68,7 +68,7 @@ switch($action){
 
                     }
                 }else{
-                    //sin traducir
+                    
                     new Message('No puedes editar','..index.php');
                 }
             }

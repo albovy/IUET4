@@ -38,7 +38,9 @@ array(
     'ShowAll subastas' => 'ShowAll subastas',
     'No hay usuarios' => 'Non hay usuarios',
     'ShowAll usuarios' => 'ShowAll usuarios',
-    'Borrado' => 'Borrado'
+    'Borrado' => 'Borrado',
+    'id incorrecto' => 'id incorrecto',
+    'No puedes editar' => 'Non podes editar'
 
 
 )
