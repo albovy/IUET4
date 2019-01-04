@@ -69,9 +69,12 @@ switch($action){
            }else{
                 if($subasta->getLogin_subastador() == $_SESSION['login'] || $_SESSION['rol'] == "ADMINISTRADOR"){
                     if(!$_POST){
-
+                        new Edit_Subastas_View($subasta);
                     }else{
-
+                        $subasta = new Subasta_Model(NULL, $_POST['tipo'], $_FILES['informacion'], $_POST['incremento'], 
+                        $_POST['fech_inicio'], $_POST['fech_fin'], 'PENDIENTE', $admin->getLogin(),NULL); 
+                        $respuesta = $subasta->edit();
+                        new Message($respuesta, '../index.php');
                     }
                 }else{
                     

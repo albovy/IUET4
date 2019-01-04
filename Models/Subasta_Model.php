@@ -76,6 +76,52 @@
             }
        }
 
+       function edit(){
+        if(isset($this->informacion['name'])){
+            $this->borrarFichero('../Files/'. $this->login_subastador .'/Subastas/'. $this->informacion['name']);
+            $informacion = $this->informacion();
+        }
+        else{
+            $informacion = $this->informacion;
+        }
+           $this->login_admin = !empty($this->login_admin) ? "'$this->login_admin'" : "NULL";
+           $this->id = !empty($this->id) ? "'$this->id'" : "NULL";
+
+           $sql = "UPDATE LOTERIAIU
+           SET `ID` = '$this->id',
+           `TIPO` = '$this->apellidos',
+           `INFORMACION` = '$informacion',
+           `INCREMENTO` = '$this->minIncremento',
+           `FECH_INICIO` = '$this->fech_inicio',
+           `FECH_FIN` = '$this->fech_fin',
+           `ESTADO` = '$this->estado',
+           `LOGIN_SUBASTADOR` = '$this->login_subastador',
+           `LOGIN_ADMIN` = '$this->login_admin'
+           WHERE `ID` = '$this->id'";
+
+            if(!$this->mysqli->query($sql)){
+                return "Error editando";
+            }
+            else{
+                return "Editado";
+                }
+        }
+
+        function borrarFichero($fichero) {
+            unlink($fichero);
+            /*$ficheros = glob($ruta . '/*');
+            foreach ($ficheros as $fichero) {
+                if(is_dir($fichero)){
+                    borrarDirectorio($fichero);
+                }
+                else{
+                    unlink($fichero);
+                }
+            }
+            rmdir($ruta);*/
+            return;
+       }
+
        //Función que devuelve el fichero de información de $this y se crea el directorio del usuario en caso de no existir, guardando el fichero de información en ese directorio
         function informacion(){
             
