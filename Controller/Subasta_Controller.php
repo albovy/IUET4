@@ -29,9 +29,7 @@ switch($action){
 
     //Pueden añadir o subastador o administrador
     case 'add':
-     $admin = new Usuario_Model($_SESSION['login']);
-            //encontramos al admin por el login
-            $admin = $admin->encontrarPorLogin();
+
         if($_SESSION['rol'] == 'PUJADOR'){
             header('Location:../index.php');
 
@@ -44,10 +42,10 @@ switch($action){
                 new Add_Subastas_View();
             }else{
                 //Controlador el estado de la subasta pendiente y el admin nulo
-                $registro = new Subasta_Model(NULL, $_POST['tipo'], $_FILES['informacion'], $_POST['incremento'], 
-                    $_POST['fech_inicio'], $_POST['fech_fin'], 'PENDIENTE', $admin->getLogin(),NULL);
+                $registro = new Subasta_Model('',$_POST['tipo'], $_FILES['informacion'], $_POST['incremento'], 
+                    $_POST['fech_inicio'], $_POST['fech_fin'], 'PENDIENTE', $_SESSION['login'],NULL);
 
-                $respuesta = $registro ->add();
+                $respuesta = $registro->add();
                 new Message($respuesta, '../index.php');
 
             }
@@ -100,7 +98,8 @@ switch($action){
         $usuario = $usuario->encontrarPorLogin();
             
         if($usuario->getRol() == 'PUJADOR'){
-            header('Location:./Controller/');
+            $subasta = new Subasta_Model();
+            $subasta = $subasta->encontrarTodos();
         }
         //Mostramos todas las subastas que hay
         if($usuario->getRol() == 'ADMINISTRADOR'){
@@ -112,11 +111,25 @@ switch($action){
         //Mostramos solo sus subastas
         }else{
                 
-            $subasta = new Subasta_Model($_SESSION['login']);
+            $subasta = new Subasta_Model('','','','','','','',$_SESSION['login']);
             $subasta = $subasta->encontrarSubastasSubastador();
             new ShowAll_Subastador_View($subasta);
         }
             
     break;
+
+    case 'validar':
+        if($_SESSION['rol'] == 'PUJADOR' || $_SESSION['rol'] == 'SUBASTADOR'){
+            header('Location:../index.php');
+        }
+        if(!isset($_GET['id'])){
+            new Message('id incorrecto','../index.php');
+        }else{
+            $subasta = new Subasta_Model($_GET['id']);
+            $subasta = $subasta->encontrarPorId();
+            $subasta = $subasta->validarSubasta($_SESSION['login']);
+
+            new Message($subasta,'../index.php');
+        }
 
 }

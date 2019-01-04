@@ -64,9 +64,9 @@
          //Se guarda el fichero de información de la subasta del usuario 
             $informacion = $this->informacion();
             $this->login_admin = !empty($this->login_admin) ? "'$this->login_admin'" : "NULL";
-             $this->id= !empty($this->id) ? "'$this->id'" : "NULL";
             //Se inserta el usuario en la base de datos y se guarda el resultado en la variable sql
-            $sql = "INSERT INTO SUBASTA VALUES($this->id, '$this->tipo', '$informacion', $this->minIncremento, '$this->fech_inicio', '$this->fech_fin', '$this->estado', '$this->login_subastador', $this->login_admin)";
+            $sql = "INSERT INTO SUBASTA VALUES('', '$this->tipo', '$informacion', $this->minIncremento, '$this->fech_inicio', '$this->fech_fin', '$this->estado', '$this->login_subastador', $this->login_admin)";
+
             //Se comprueba si se ha insertado correctamente el usuario y devuelve un mensaje con el resultado
             if($this->mysqli->query($sql)){
                 return 'Añadida';
@@ -78,8 +78,11 @@
 
        //Función que devuelve el fichero de información de $this y se crea el directorio del usuario en caso de no existir, guardando el fichero de información en ese directorio
         function informacion(){
-            $fichero = '../Files/'. $this->login_subastador .'/Subastas/'. $this->informacion['name'];
-            $directorio = '../Files/'. $this->login_subastador .'/Subastas/' ;
+            
+            $fichero = '../Files/'. $this->login_subastador .'/Subastas/'.$this->informacion['name'];
+            
+            $directorio = '../Files/'. $this->login_subastador .'/Subastas/';
+            var_dump($directorio);
             //Si el directorio no existe, se crea
             if(!file_exists($directorio)){
                 mkdir($directorio,0777,true);
@@ -141,5 +144,15 @@
             }
             
             return $subastas;
+        }
+
+        function validarSubasta($loginAd){
+            $sql="UPDATE SUBASTA SET `ESTADO` = 'APROBADA', `LOGIN_ADMIN` = '$loginAd' WHERE `ID` = '$this->id'";
+            if(!$this->mysqli->query($sql)){
+                return "Error editando";
+            }else{
+        
+                return "Editado";
+            }
         }
     }

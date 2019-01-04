@@ -47,7 +47,7 @@ class ShowAll_Usuarios_View{
                         <?php
                             if($usuario->getEstado() == 'PENDIENTE'){
                         ?>
-                            <a href="../Controller/Usuario_Controller.php?action=editEstado&id=<?=$usuario->getLogin()?>"><i class="material-icons tdShowIcons">done</i></a>
+                            <a href="../Controller/Usuario_Controller.php?action=validar&login=<?=$usuario->getLogin()?>"><i class="material-icons tdShowIcons">done</i></a>
                         <?php
                             }
                         ?>

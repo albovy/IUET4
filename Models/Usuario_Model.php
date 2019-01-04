@@ -148,8 +148,8 @@
 
         //Función que devuelve el avatar de $this y se crea el directorio del usuario en caso de no existir, guardando el avatar en ese directorio
         function avatar(){
-            $picture = '../Files/'. $this->email .'/Avatar/'. $this->avatar['name'];
-            $directorio = '../Files/'. $this->email .'/Avatar/';
+            $picture = '../Files/'. $this->login .'/Avatar/'. $this->avatar['name'];
+            $directorio = '../Files/'. $this->login .'/Avatar/';
             //Si el directorio no existe, se crea
             if(!file_exists($directorio)){
                 mkdir($directorio,0777,true);
@@ -162,7 +162,7 @@
         //Función que borra un usuario de la base de datos, borrando el directorio en el que se guardaba su avatar
         function delete(){
 
-            $dirAvatar = '../Files/'. $this->email .'/Avatar/';
+            $dirAvatar = '../Files/'. $this->login .'/Avatar/';
 
             $sql = "DELETE FROM USUARIO
                     WHERE `LOGIN` = '$this->login' OR `dni`= '$this->dni'";
@@ -182,7 +182,7 @@
         
             if(isset($this->avatar['name'])){
 
-                $this->borrarDirectorio('../Files/'. $this->email .'/Avatar/');
+                $this->borrarDirectorio('../Files/'. $this->login .'/Avatar/');
                 $avatar = $this->avatar();
             
             }else{
@@ -265,6 +265,18 @@
                 array_push($usuarios, new Usuario_Model($fila['LOGIN'],$fila['PASSWORD'],$fila['EMAIL'],$fila['DNI'],$fila['DIRECCION'], $fila['NOMBRE'], $fila['APELLIDOS'], $fila['AVATAR'], $fila['ROL'], $fila['ESTADO'],$fila['LOGIN_ADMIN']));
             }
             return $usuarios;
+        }
+        //solo se puede cambiar a creado
+        function cambiarEstado($loginAd){
+            $sql="UPDATE USUARIO SET `ESTADO` = 'CREADO', `LOGIN_ADMIN` = '$loginAd' WHERE `LOGIN` = '$this->login'";
+            
+            if(!$this->mysqli->query($sql)){
+                return "Error editando";
+            }else{
+        
+                return "Editado";
+            }
+
         }
 
     } 

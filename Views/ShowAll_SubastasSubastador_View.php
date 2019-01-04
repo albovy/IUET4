@@ -33,7 +33,7 @@ class ShowAll_Subastador_View{
 					foreach($this->subastas as $subasta){
 						?>
 						<tr>
-						<td class="tdShowAll"></td>
+						
 						<td class="tdShowAll"><?= $subasta->getLogin_subastador() ?></td>
 						<td class="tdShowAll"><?= $subasta->getInformacion() ?></td>
 						<td class="tdShowAll"><?= $subasta->getEstado() ?></td>

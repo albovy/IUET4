@@ -186,6 +186,22 @@ switch($action){
             new ShowAll_Usuarios_View($usuarios);
         }
 
+    break;
+    //funcion admin
+    case 'validar':
+        if($_SESSION['rol'] == 'PUJADOR' || $_SESSION['rol'] == 'SUBASTADOR'){
+            header('Location:../index.php');
+        }
+        if(!isset($_GET['login'])){
+            new Message('Login incorrecto','../index.php');
+        }else{
+            $usuario = new Usuario_Model($_GET['login']);
+            $usuario = $usuario->encontrarPorLogin();
+            $respuesta = $usuario->cambiarEstado($_SESSION['login']);
+
+            new Message($respuesta,'../index.php');
+        }
+
 
         
         

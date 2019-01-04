@@ -33,14 +33,21 @@ class ShowAll_View{
 					foreach($this->subastas as $subasta){
 						?>
 						<tr>
-						<td class="tdShowAll"></td>
+						
 						<td class="tdShowAll"><?= $subasta->getID() ?></td>
 						<td class="tdShowAll"><?= $subasta->getInformacion() ?></td>
 						<td class="tdShowAll"><?= $subasta->getEstado() ?></td>
 						
 						<td class="tdShowAll"><a href="../Controller/Subasta_Controller.php?action=edit&id=<?=$subasta->getID()?>"><i class="material-icons tdShowIcons">create</i></a>
 						<a href="../Controller/Subasta_Controller.php?action=showcurrent&id=<?=$subasta->getID()?>"><i class="material-icons tdShowIcons">visibility</i></a>
-						<a href="../Controller/Subasta_Controller.php?action=delete&id=<?=$subasta->getID()?>"><i class="material-icons tdShowIcons">delete</i></a></td>
+						<?php if($subasta->getEstado()== 'PENDIENTE'){
+?>
+						
+						<a href="../Controller/Subasta_Controller.php?action=validar&id=<?=$subasta->getID()?>"><i class="material-icons tdShowIcons">done</i></a>
+						<?php
+						}
+						?>
+						</td>
 						<tr>
 <?php
 					}
