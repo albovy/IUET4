@@ -23,9 +23,9 @@
             <label for="incremento"><?= $strings['Incremento mínimo'] ?></label>
             <input type="number" id="incremento" name="incremento">
             <label for="fech_inicio"><?= $strings['Fecha inicio'] ?></label>
-            <input type="date" id="fech_inicio" name="fech_inicio">
+            <input type="text" id="dateAdd" name="fech_inicio" class="tcal" value="" readonly>
             <label for="fech_fin"><?= $strings['Fecha fin'] ?></label>
-            <input type="date" id="fech_fin" name="fech_fin">
+            <input type="text" id="dateAdd" name="fech_fin" class="tcal" value="" readonly>
             
         
             <a href='../index.php' class="registro"><?= $strings['Volver'] ?></a>

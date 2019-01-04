@@ -18,7 +18,9 @@
 	<link href="https://fonts.googleapis.com/css?family=K2D" rel="stylesheet">
     <!--validaciones-->
     <script src="../Views/js/validaciones.js"></script>
-    
+    <!-- calendar -->
+	<link rel="stylesheet" type="text/css" href="../Views/calendario/tcal.css" />
+    <script src="../Views/js/tcal.js"></script>
     <!--bootstrap js-->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 	 crossorigin="anonymous"></script>

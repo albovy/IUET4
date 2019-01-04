@@ -125,6 +125,8 @@
             $subastas = array();
 
             foreach($subastas_db as $sub){
+                $this->comprobarEstado($sub);
+
                 array_push($subastas,new Subasta_Model($sub['ID'],$sub['TIPO'],$sub['INFORMACION'],$sub['INCREMENTO']
                             ,$sub['FECH_INICIO'],$sub['FECH_FIN'],$sub['ESTADO'],$sub['LOGIN_SUBASTADOR'],$sub['LOGIN_ADMIN']));
             }
@@ -139,6 +141,7 @@
             $subastas = array();
 
             foreach($subastas_db as $sub){
+                $this->comprobarEstado($sub);
                 array_push($subastas,new Subasta_Model($sub['ID'],$sub['TIPO'],$sub['INFORMACION'],$sub['INCREMENTO']
                             ,$sub['FECH_INICIO'],$sub['FECH_FIN'],$sub['ESTADO'],$sub['LOGIN_SUBASTADOR'],$sub['LOGIN_ADMIN']));
             }
@@ -154,5 +157,21 @@
         
                 return "Editado";
             }
+        }
+
+        function comprobarEstado($sub){
+            $hoy = new DateTime();
+            $year = getdate()['year'];
+            $mon = getdate()['mon'];
+            $day = getdate()['mday'];
+            $hoy->setDate($year,$mon,$day);
+
+            var_dump($hoy);
+            $fecha_subasta_inicio = new DateTime($sub['FECH_INICIO']);
+            $fecha_subasta_fin =new DateTime($sub['FECH_FIN']);
+
+            
+
+
         }
     }
