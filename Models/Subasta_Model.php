@@ -165,13 +165,20 @@
             $mon = getdate()['mon'];
             $day = getdate()['mday'];
             $hoy->setDate($year,$mon,$day);
-
-            var_dump($hoy);
             $fecha_subasta_inicio = new DateTime($sub['FECH_INICIO']);
             $fecha_subasta_fin =new DateTime($sub['FECH_FIN']);
 
+            switch($sub['ESTADO']){
+                case: 'APROBADO':
+                        if($hoy <= $fech_inicio){
+                            
+                        }
+            }
             
 
 
+        }
+        function cambiarEstado(){
+            
         }
     }
