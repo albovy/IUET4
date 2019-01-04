@@ -25,6 +25,9 @@ class ShowAll_Subastador_View{
 				<th class="thShowAll"><?= $strings['Login'] ?></th>
 				<th class="thShowAll"><?= $strings['Información'] ?></th>
 				<th class="thShowAll"><?= $strings['Estado'] ?></th>
+				<th class="thShowAll"><?= $strings['Fecha inicio'] ?></th>
+				<th class="thShowAll"><?= $strings['Fecha fin'] ?></th>
+				
 			
 				
 				</thead>
@@ -37,6 +40,8 @@ class ShowAll_Subastador_View{
 						<td class="tdShowAll"><?= $subasta->getLogin_subastador() ?></td>
 						<td class="tdShowAll"><?= $subasta->getInformacion() ?></td>
 						<td class="tdShowAll"><?= $subasta->getEstado() ?></td>
+						<td class="tdShowAll"><?= $subasta->getFech_inicio() ?></td>
+						<td class="tdShowAll"><?= $subasta->getFech_fin() ?></td>
 						
 						<td class="tdShowAll"><a href="../Controller/Subasta_Controller.php?action=edit&id=<?=$subasta->getID()?>"><i class="material-icons tdShowIcons">create</i></a>
 						<a href="../Controller/Subasta_Controller.php?action=showcurrent&id=<?=$subasta->getID()?>"><i class="material-icons tdShowIcons">visibility</i></a>

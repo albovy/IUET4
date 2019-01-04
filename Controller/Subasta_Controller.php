@@ -6,6 +6,7 @@ include '../Models/Usuario_Model.php';
 include '../Models/Subasta_Model.php';
 include '../Views/ShowAll_SubastasAdmin_View.php';
 include '../Views/ShowAll_SubastasSubastador_View.php';
+include '../Views/ShowAll_SubastasPujador_View.php';
 include '../Views/MESSAGE_View.php';
 include '../Views/Add_Subastas_View.php';
 
@@ -103,7 +104,8 @@ switch($action){
         if($usuario->getRol() == 'PUJADOR'){
             $subasta = new Subasta_Model();
             $subasta = $subasta->encontrarTodos();
-        }
+            new ShowAll_Pujador($subasta);
+        }else{
         //Mostramos todas las subastas que hay
         if($usuario->getRol() == 'ADMINISTRADOR'){
                 
@@ -118,8 +120,10 @@ switch($action){
             $subasta = $subasta->encontrarSubastasSubastador();
             new ShowAll_Subastador_View($subasta);
         }
+    }
             
     break;
+
 
     case 'validar':
         if($_SESSION['rol'] == 'PUJADOR' || $_SESSION['rol'] == 'SUBASTADOR'){

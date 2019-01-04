@@ -163,6 +163,9 @@
 
             
         function encontrarTodos(){
+            
+            $this->comprobarSubastas();
+            
             $sql="SELECT * FROM SUBASTA";
             
             $resultado = $this->mysqli->query($sql);
@@ -171,7 +174,7 @@
             $subastas = array();
 
             foreach($subastas_db as $sub){
-                $this->comprobarEstado($sub);
+               
 
                 array_push($subastas,new Subasta_Model($sub['ID'],$sub['TIPO'],$sub['INFORMACION'],$sub['INCREMENTO']
                             ,$sub['FECH_INICIO'],$sub['FECH_FIN'],$sub['ESTADO'],$sub['LOGIN_SUBASTADOR'],$sub['LOGIN_ADMIN']));
@@ -181,13 +184,15 @@
         }
 
         function encontrarSubastasSubastador(){
+            $this->comprobarSubastas();
+            
             $sql="SELECT * FROM SUBASTA WHERE LOGIN_SUBASTADOR = '$this->login_subastador'";
             $resultado = $this->mysqli->query($sql);
             $subastas_db = $resultado->fetch_All(MYSQLI_ASSOC);
             $subastas = array();
 
             foreach($subastas_db as $sub){
-                $this->comprobarEstado($sub);
+                
                 array_push($subastas,new Subasta_Model($sub['ID'],$sub['TIPO'],$sub['INFORMACION'],$sub['INCREMENTO']
                             ,$sub['FECH_INICIO'],$sub['FECH_FIN'],$sub['ESTADO'],$sub['LOGIN_SUBASTADOR'],$sub['LOGIN_ADMIN']));
             }
@@ -204,8 +209,21 @@
                 return "Editado";
             }
         }
+        function comprobarSubastas(){
+            $sql="SELECT * FROM SUBASTA WHERE `ESTADO` <> 'PENDIENTE'";
+            $resultado = $this->mysqli->query($sql);
+            $subastas_db = $resultado->fetch_All(MYSQLI_ASSOC);
+            $subastas = array();
+
+            foreach($subastas_db as $sub){
+                
+                $this->comprobarEstado($sub);
+            }
+
+        }
 
         function comprobarEstado($sub){
+            
             $hoy = new DateTime();
             $year = getdate()['year'];
             $mon = getdate()['mon'];
@@ -213,18 +231,50 @@
             $hoy->setDate($year,$mon,$day);
             $fecha_subasta_inicio = new DateTime($sub['FECH_INICIO']);
             $fecha_subasta_fin =new DateTime($sub['FECH_FIN']);
-
+            
+            
             switch($sub['ESTADO']){
-                case: 'APROBADO':
-                        if($hoy <= $fech_inicio){
-                            
+
+                case'APROBADA' || 'FINALIZADA':
+                       
+                        if($fecha_subasta_inicio <= $hoy){
+                            $respuesta = $this->cambiarEstado('INICIADA',$sub);                 
                         }
+                        if($hoy >= $fecha_subasta_fin){
+                            $respuesta = $this->cambiarEstado('FINALIZADA',$sub);
+                        }
+                        if($hoy < $fecha_subasta_inicio){
+                            $respuesta = $this->cambiarEstado('APROBADA',$sub);
+                        }
+                        
+                break;
+                case 'INICIADA':
+                    if($hoy < $fecha_subasta_inicio){
+                        $respuesta = $this->cambiarEstado('APROBADA',$sub);
+                    }
+                    if($hoy >= $fecha_subasta_fin){
+                        $respuesta = $this->cambiarEstado('FINALIZADA',$sub);
+                    }
+                    
+                break;
+                
+                
+                
+
             }
             
 
 
         }
-        function cambiarEstado(){
-            
+        function cambiarEstado($estado,$subasta){
+            $id = $subasta['ID'];
+            $sql="UPDATE SUBASTA SET `ESTADO` ='$estado' WHERE `ID` = '$id'";
+            if(!$this->mysqli->query($sql)){
+                return "Error editando";
+            }else{
+        
+                return "Editado";
+            }
+
         }
     }
