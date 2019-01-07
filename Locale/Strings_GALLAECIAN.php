@@ -51,7 +51,17 @@ array(
     'Añadida' => 'Engadida',
     'Pujar' => 'Puxar',
     'Puja más alta' => 'Puxa mais alta',
-    'Puja más baja que la más alta' => 'Puxa mais baixa que a mais alta'
+    'Puja más baja que la más alta' => 'Puxa mais baixa que a mais alta',
+    'Algunos datos estan vacíos' => 'Alguns datos están vacíos',
+    'Usuario eliminado' =>  'Usuario eliminado',
+    'Error eliminando' => 'Error eliminando',
+    'Datos a eliminar' => 'Datos a eliminar',
+    'Creado por' => 'Feito por',
+    'Realizado el' => 'Feito o',
+    'Listar Usuarios' => 'Listar Usuarios',
+    'Gestionar subastas' => 'Xestionar subastas',
+    'Crear Subasta' => 'Crear Subasta',
+    'Tus subastas' => 'As túas subastas'
 
 
 )

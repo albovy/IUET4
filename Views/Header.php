@@ -45,20 +45,20 @@
 				switch($_SESSION['rol']){
 					case 'ADMINISTRADOR':
 						?>
-						<a href="../Controller/Usuario_Controller.php?action=listUsuarios">Listar Usuarios</a>
-						<a href="../Controller/Subasta_Controller.php">Gestionar subastas</a>
+						<a href="../Controller/Usuario_Controller.php?action=listUsuarios"><?= $strings['Listar Usuarios'] ?></a>
+						<a href="../Controller/Subasta_Controller.php"><?= $strings['Gestionar subastas'] ?></a>
 						<?php
 					break;
 
 					case 'SUBASTADOR':
 						?>
-						<a href="../Controller/Subasta_Controller.php?action=add">Crear Subasta</a>
-						<a href="../Controller/Subasta_Controller.php">Tus subastas</a>
+						<a href="../Controller/Subasta_Controller.php?action=add"><?= $strings['Crear Subasta'] ?></a>
+						<a href="../Controller/Subasta_Controller.php"><?= $strings['Tus subastas'] ?></a>
 						<?php
 					break;
 					default:
 						?>
-						<a href="../Controller/Subasta_Controller.php">Pujar</a>
+						<a href="../Controller/Subasta_Controller.php"><?= $strings['Pujar'] ?></a>
 						<?php
 					break;
 				}

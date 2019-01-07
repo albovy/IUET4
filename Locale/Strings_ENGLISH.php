@@ -51,7 +51,17 @@ array(
     'Añadida' => 'Added',
     'Pujar' => 'Bid',
     'Puja más alta' => 'Highest bid',
-    'Puja más baja que la más alta' => 'Bid is no high enough'
+    'Puja más baja que la más alta' => 'Bid is no high enough',
+    'Algunos datos estan vacíos' => 'Some fields are empty',
+    'Usuario eliminado' =>  'User deleted',
+    'Error eliminando' => 'Error deleting',
+    'Datos a eliminar' => 'Information to eliminate',
+    'Creado por' => 'Made by',
+    'Realizado el' => 'Made on',
+    'Listar Usuarios' => 'List users',
+    'Gestionar subastas' => 'Manage auctions',
+    'Crear Subasta' => 'Create auction',
+    'Tus subastas' => 'Your auctions'
     
 
 
