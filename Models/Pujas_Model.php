@@ -31,7 +31,8 @@
         }
 
         function getMaxPujador(){
-            $sql="SELECT MAX(`DINERO`) AS MAXIMO FROM PUJA WHERE `ID_SUBASTA` = '$this->id_subasta'";
+            $sql="SELECT *,MAX(`DINERO`) AS MAXIMO FROM PUJA WHERE `ID_SUBASTA` = '$this->id_subasta'";
+            var_dump($sql);
 
             $resultado = $this->mysqli->query($sql);
             $resultado = $resultado->fetch_array();

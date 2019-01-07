@@ -48,7 +48,10 @@ array(
     'Incremento mínimo' => 'Minimum increment',
     'Fecha inicio' => 'Start date',
     'Fecha fin' => 'Ending date',
-    'Añadida' => 'Added'
+    'Añadida' => 'Added',
+    'Pujar' => 'Bid',
+    'Puja más alta' => 'Highest bid',
+    'Puja más baja que la más alta' => 'Bid is no high enough'
     
 
 

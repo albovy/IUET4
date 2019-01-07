@@ -62,13 +62,16 @@
 
        function add(){
          //Se guarda el fichero de información de la subasta del usuario 
-            $informacion = $this->informacion();
+            
             $this->login_admin = !empty($this->login_admin) ? "'$this->login_admin'" : "NULL";
             //Se inserta el usuario en la base de datos y se guarda el resultado en la variable sql
-            $sql = "INSERT INTO SUBASTA VALUES('', '$this->tipo', '$informacion', $this->minIncremento, '$this->fech_inicio', '$this->fech_fin', '$this->estado', '$this->login_subastador', $this->login_admin)";
-
+            $sql = "INSERT INTO SUBASTA VALUES('', '$this->tipo', NULL, $this->minIncremento, '$this->fech_inicio', '$this->fech_fin', '$this->estado', '$this->login_subastador', $this->login_admin)";
+            var_dump($sql);
             //Se comprueba si se ha insertado correctamente el usuario y devuelve un mensaje con el resultado
             if($this->mysqli->query($sql)){
+                $id = $this->mysqli->insert_id;
+                $info = $this->informacion($id);
+                $sql = "UPDATE SUBASTA SET `INFORMACION` = '$info' WHERE `ID`=  '$id'";
                 return 'Añadida';
             }
             else{
@@ -123,11 +126,11 @@
        }
 
        //Función que devuelve el fichero de información de $this y se crea el directorio del usuario en caso de no existir, guardando el fichero de información en ese directorio
-        function informacion(){
+        function informacion($id){
             
-            $fichero = '../Files/'. $this->login_subastador .'/Subastas/'.$this->informacion['name'];
+            $fichero = '../Files/'. $this->login_subastador .'/Subastas/'. $id.'/'.$this->informacion['name'];
             
-            $directorio = '../Files/'. $this->login_subastador .'/Subastas/';
+            $directorio = '../Files/'. $this->login_subastador .'/Subastas/'. $id;
             var_dump($directorio);
             //Si el directorio no existe, se crea
             if(!file_exists($directorio)){

@@ -48,7 +48,10 @@ array(
     'Incremento mínimo' => 'Incremento mínimo',
     'Fecha inicio' => 'Fecha inicio',
     'Fecha fin' => 'Fecha fin',
-    'Añadida' => 'Añadida'
+    'Añadida' => 'Añadida',
+    'Pujar' => 'Pujar',
+    'Puja más alta' => 'Puja más alta',
+    'Puja más baja que la más alta' => 'Puja más baja que la más alta'
 
 
 
