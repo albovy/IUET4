@@ -46,7 +46,7 @@
 				<tr>
 					<td class="tdColDeleteOrTupla"><?= $strings['Pujar'] ?>:</td>
 					<td class="tdDeleteOrTupla">
-                        <form action="../Controller/Puja_Controller.php">
+                        <form action="../Controller/Puja_Controller.php?id=<?=$this->subasta->getID()?>" method='POST'>
                         <input type="text" id="puja" name="puja">
                         <button  class="buttonGuardar" onclick=""><i class="material-icons" o>check_circle</i></button>
                         </form>

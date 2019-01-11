@@ -43,7 +43,7 @@ switch($action){
                 new Add_Subastas_View();
             }else{
                 //Controlador el estado de la subasta pendiente y el admin nulo
-                $registro = new Subasta_Model('',$_POST['tipo'], $_FILES['informacion'], $_POST['incremento'], 
+                $registro = new Subasta_Model(NULL,$_POST['tipo'], $_FILES['informacion'], $_POST['incremento'], 
                     $_POST['fech_inicio'], $_POST['fech_fin'], 'PENDIENTE', $_SESSION['login'],NULL);
 
                 $respuesta = $registro->add();
@@ -102,8 +102,10 @@ switch($action){
         $usuario = $usuario->encontrarPorLogin();
             
         if($usuario->getRol() == 'PUJADOR'){
+            
             $subasta = new Subasta_Model();
             $subasta = $subasta->encontrarTodos();
+            
             new ShowAll_Pujador($subasta);
         }else{
         //Mostramos todas las subastas que hay
@@ -138,5 +140,8 @@ switch($action){
 
             new Message($subasta,'../index.php');
         }
+    break;
+
+
 
 }

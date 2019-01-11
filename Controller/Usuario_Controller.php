@@ -198,10 +198,7 @@ switch($action){
             $usuario = new Usuario_Model($_GET['login']);
             $usuario = $usuario->encontrarPorLogin();
             $respuesta = $usuario->cambiarEstado($_SESSION['login']);
-            $hoy =getdate();
-            var_dump($hoy);
-
-            //new Message($respuesta,'../index.php');
+            new Message($respuesta,'../index.php');
         }
 
 

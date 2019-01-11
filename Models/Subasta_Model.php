@@ -1,4 +1,6 @@
 <?php
+
+    include '../Models/Notificacion_Model.php';
     class Subasta_Model{
         var $id;
         var $tipo;
@@ -65,13 +67,14 @@
             
             $this->login_admin = !empty($this->login_admin) ? "'$this->login_admin'" : "NULL";
             //Se inserta el usuario en la base de datos y se guarda el resultado en la variable sql
-            $sql = "INSERT INTO SUBASTA VALUES('', '$this->tipo', NULL, $this->minIncremento, '$this->fech_inicio', '$this->fech_fin', '$this->estado', '$this->login_subastador', $this->login_admin)";
+            $sql = "INSERT INTO SUBASTA VALUES(NULL, '$this->tipo', NULL, $this->minIncremento, '$this->fech_inicio', '$this->fech_fin', '$this->estado', '$this->login_subastador', $this->login_admin)";
             var_dump($sql);
             //Se comprueba si se ha insertado correctamente el usuario y devuelve un mensaje con el resultado
             if($this->mysqli->query($sql)){
                 $id = $this->mysqli->insert_id;
                 $info = $this->informacion($id);
                 $sql = "UPDATE SUBASTA SET `INFORMACION` = '$info' WHERE `ID`=  '$id'";
+                $this->mysqli->query($sql);
                 return 'Añadida';
             }
             else{
@@ -81,7 +84,7 @@
 
        function edit(){
         if(isset($this->informacion['name'])){
-            $this->borrarFichero('../Files/'. $this->login_subastador .'/Subastas/'. $this->informacion['name']);
+            $this->borrarFichero('../Files/'. $this->login_subastador .'/Subastas/'.$id.'/'.$this->informacion['name']);
             $informacion = $this->informacion();
         }
         else{
@@ -178,7 +181,7 @@
 
             foreach($subastas_db as $sub){
                
-
+                
                 array_push($subastas,new Subasta_Model($sub['ID'],$sub['TIPO'],$sub['INFORMACION'],$sub['INCREMENTO']
                             ,$sub['FECH_INICIO'],$sub['FECH_FIN'],$sub['ESTADO'],$sub['LOGIN_SUBASTADOR'],$sub['LOGIN_ADMIN']));
             }
@@ -213,14 +216,16 @@
             }
         }
         function comprobarSubastas(){
+            
             $sql="SELECT * FROM SUBASTA WHERE `ESTADO` <> 'PENDIENTE'";
             $resultado = $this->mysqli->query($sql);
             $subastas_db = $resultado->fetch_All(MYSQLI_ASSOC);
             $subastas = array();
 
             foreach($subastas_db as $sub){
-                
                 $this->comprobarEstado($sub);
+                
+
             }
 
         }
@@ -236,9 +241,12 @@
             $fecha_subasta_fin =new DateTime($sub['FECH_FIN']);
             
             
+
+            
             switch($sub['ESTADO']){
 
-                case'APROBADA' || 'FINALIZADA':
+                case'APROBADA':
+                
                        
                         if($fecha_subasta_inicio <= $hoy){
                             $respuesta = $this->cambiarEstado('INICIADA',$sub);                 
@@ -246,9 +254,7 @@
                         if($hoy >= $fecha_subasta_fin){
                             $respuesta = $this->cambiarEstado('FINALIZADA',$sub);
                         }
-                        if($hoy < $fecha_subasta_inicio){
-                            $respuesta = $this->cambiarEstado('APROBADA',$sub);
-                        }
+
                         
                 break;
                 case 'INICIADA':
@@ -270,13 +276,23 @@
 
         }
         function cambiarEstado($estado,$subasta){
+            
+            $notificacion = new Notificacion_Model($estado,$subasta['LOGIN_SUBASTADOR'],$subasta['ID']);
+            
             $id = $subasta['ID'];
             $sql="UPDATE SUBASTA SET `ESTADO` ='$estado' WHERE `ID` = '$id'";
+
             if(!$this->mysqli->query($sql)){
                 return "Error editando";
             }else{
-        
-                return "Editado";
+                
+                $notificacion = $notificacion->add();
+                var_dump($notificacion);
+                if($notificacion == "Añadida"){
+                    
+                    return "Editado";
+                }
+                return "Error";
             }
 
         }

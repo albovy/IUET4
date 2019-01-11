@@ -39,6 +39,7 @@
 				
                 <button role="link" onclick="window.location='../Functions/Desconectar.php'"><i class="material-icons">power_settings_new</i></button>
                 <a href="../Controller/Usuario_Controller.php?action=edit&login=<?=$_SESSION['login']?>" class="enlaceHead"><i class="material-icons enlaceIconUser">person</i><?php echo $_SESSION['login']; ?></a>
+				<a href="../Controller/Notificacion_Controller.php"><?=$strings['Tus notificaciones']?></a>
 
 
             <?php
@@ -59,6 +60,7 @@
 					default:
 						?>
 						<a href="../Controller/Subasta_Controller.php"><?= $strings['Pujar'] ?></a>
+						<a href="../Controller/Puja_Controller.php?action=historial"><?= $strings['Historial'] ?></a>
 						<?php
 					break;
 				}

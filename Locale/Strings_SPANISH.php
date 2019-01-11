@@ -61,7 +61,15 @@ array(
     'Listar Usuarios' => 'Listar Usuarios',
     'Gestionar subastas' => 'Gestionar subastas',
     'Crear Subasta' => 'Crear Subasta',
-    'Tus subastas' => 'Tus subastas'
+    'Tus subastas' => 'Tus subastas',
+    'Puja exitosa' => 'Puxa exitosa',
+    'Error en la puja' => 'Error en la puja',
+    'No hiciste pujas' => 'No hiciste pujas',
+    'Historial' => 'Historial',
+    'Dinero' => 'Dinero',
+    'ID Subasta' => 'ID Subasta',
+    'Mensaje' => 'Mensaje',
+    'Tus notificaciones' => 'Tus noticaciones'
 
 
 

@@ -61,10 +61,15 @@ array(
     'Listar Usuarios' => 'List users',
     'Gestionar subastas' => 'Manage auctions',
     'Crear Subasta' => 'Create auction',
-    'Tus subastas' => 'Your auctions'
-    
-
-
+    'Tus subastas' => 'Your auctions',
+    'Puja exitosa' => 'Succesful bill',
+    'Error en la puja' => 'Error billing',
+    'No hiciste pujas' => 'You don´t have bills',
+    'Historial' => 'Historic',
+    'Dinero' => 'Money',
+    'ID Subasta' => 'Auction ID',
+    'Mensaje' => 'Message',
+    'Tus notificaciones' => 'Your notifications'
 )
 ;
 ?>
