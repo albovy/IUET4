@@ -28,12 +28,14 @@
 
         function encontrarPorLogin(){
             $sql = "SELECT * FROM NOTIFICACION WHERE `LOGIN` = '$this->login'";
+            
             $resultado = $this->mysqli->query($sql);
             $notificaciones_db = $resultado->fetch_All(MYSQLI_ASSOC);
             $notificaciones = array();
 
             foreach($notificaciones_db as $notificacion_db){
                 array_push($notificaciones,new Notificacion_Model($notificacion_db['ESTADO'],$notificacion_db['LOGIN'],$notificacion_db['ID_SUBASTA']));
+                
             }
             
             return $notificaciones;

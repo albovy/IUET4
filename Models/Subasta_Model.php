@@ -207,11 +207,12 @@
         }
 
         function validarSubasta($loginAd){
+            $notificacion = new Notificacion_Model('APROBADA',$this->login_subastador,$this->id);
             $sql="UPDATE SUBASTA SET `ESTADO` = 'APROBADA', `LOGIN_ADMIN` = '$loginAd' WHERE `ID` = '$this->id'";
             if(!$this->mysqli->query($sql)){
                 return "Error editando";
             }else{
-        
+                $notificacion = $notificacion->add();
                 return "Editado";
             }
         }

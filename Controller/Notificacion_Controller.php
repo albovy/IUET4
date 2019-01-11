@@ -17,9 +17,10 @@ if(!isset($_GET['action'])){
 switch($action){
 
     default:
-    
-        $notificacion = new Notificacion_Model();
+        
+        $notificacion = new Notificacion_Model('',$_SESSION['login']);
         $notificacion = $notificacion->encontrarPorLogin();
+        
         new Notificacion_View($notificacion);
     break;  
 }
