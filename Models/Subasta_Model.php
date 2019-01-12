@@ -231,6 +231,24 @@
 
         }
 
+        function search(){
+            
+          
+            $sql = "SELECT * FROM SUBASTA WHERE  `tipo` LIKE '%$this->tipo%' AND `informacion` 
+            LIKE '%$this->informacion%' AND   `fech_inicio` LIKE '%$this->fech_inicio%' AND `fech_fin` LIKE  '%$this->fech_fin%' AND `estado` LIKE '%$this->estado%' AND `login_subastador` LIKE '%$this->login_subastador%' AND `login_admin` LIKE '%$this->login_admin%'";
+            $resultado = $this->mysqli->query($sql);
+            $subastas_db = $resultado->fetch_All(MYSQLI_ASSOC);
+            $subastas = array();
+
+            foreach($subastas_db as $sub){
+                
+                array_push($subastas,new Subasta_Model($sub['ID'],$sub['TIPO'],$sub['INFORMACION'],$sub['INCREMENTO']
+                            ,$sub['FECH_INICIO'],$sub['FECH_FIN'],$sub['ESTADO'],$sub['LOGIN_SUBASTADOR'],$sub['LOGIN_ADMIN']));
+            }
+            
+            return $subastas;
+        }
+
         function comprobarEstado($sub){
             
             $hoy = new DateTime();

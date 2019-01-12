@@ -9,6 +9,7 @@ include '../Views/ShowAll_SubastasSubastador_View.php';
 include '../Views/ShowAll_SubastasPujador_View.php';
 include '../Views/MESSAGE_View.php';
 include '../Views/Add_Subastas_View.php';
+include '../Views/Search_Subastas_View.php';
 
 
 //inicio de sesion
@@ -89,6 +90,36 @@ switch($action){
 
     case 'delete':
 
+
+    break;
+
+    case 'search':
+     $usuario = new Usuario_Model($_SESSION['login']);
+     $usuario = $usuario->encontrarPorLogin();
+
+    
+            
+            if(!$_POST){
+                new Search_Subastas_View();
+            }else{
+                    $subasta = new Subasta_Model(NULL, $_POST['tipo'],$_POST['informacion'], $_POST['incremento'] ,
+                        $_POST['fech_inicio'], $_POST['fech_fin'],$_POST['estado'],$_POST['subastador']);
+        
+
+            $respuesta = $subasta->search();
+             if($_GET['results']){
+                if($_SESSION['rol'] == 'ADMINISTRADOR'){
+                     new ShowAll_View($respuesta);
+                }
+
+             if($_SESSION['rol'] == 'PUJADOR'){
+                  new ShowAll_Pujador($respuesta);
+             }
+            }       
+        }
+    
+
+    
 
     break;
         

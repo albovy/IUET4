@@ -48,6 +48,7 @@
 						?>
 						<a href="../Controller/Usuario_Controller.php?action=listUsuarios"><?= $strings['Listar Usuarios'] ?></a>
 						<a href="../Controller/Subasta_Controller.php"><?= $strings['Gestionar subastas'] ?></a>
+						<a href="../Controller/Subasta_Controller.php?action=search"><?= $strings['Buscar subastas'] ?></a>
 						<?php
 					break;
 
@@ -55,12 +56,14 @@
 						?>
 						<a href="../Controller/Subasta_Controller.php?action=add"><?= $strings['Crear Subasta'] ?></a>
 						<a href="../Controller/Subasta_Controller.php"><?= $strings['Tus subastas'] ?></a>
+						
 						<?php
 					break;
 					default:
 						?>
 						<a href="../Controller/Subasta_Controller.php"><?= $strings['Pujar'] ?></a>
 						<a href="../Controller/Puja_Controller.php?action=historial"><?= $strings['Historial'] ?></a>
+						<a href="../Controller/Subasta_Controller.php?action=search"><?= $strings['Buscar subastas'] ?></a>
 						<?php
 					break;
 				}

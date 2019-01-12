@@ -69,7 +69,12 @@ array(
     'Dinero' => 'Dinero',
     'ID Subasta' => 'ID Subasta',
     'Mensaje' => 'Mensaxe',
-    'Tus notifiaciones' => 'As tuas notificacións'
+    'Tus notificaciones' => 'As tuas notificacións',
+    'Buscar subastas' => 'Buscar subastas',
+    'Pendiente' => 'Pendente',
+    'Aprobada' => 'Aprobada',
+    'Iniciada' => 'Iniciada',
+    'Finalizada' => 'Finalizada'
 
 
 )
