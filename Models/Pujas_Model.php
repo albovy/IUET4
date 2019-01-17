@@ -43,18 +43,18 @@
         }
         function getLoginPujadorMaxPuj(){
             $sql="SELECT * FROM PUJA WHERE `DINERO` = (SELECT MAX(`DINERO`) FROM PUJA WHERE `ID_SUBASTA`= '$this->id_subasta')";
-            var_dump($sql);
+           
             
             $resultado = $this->mysqli->query($sql);
             $resultado = $resultado->fetch_array();
-            var_dump($resultado);
+            
             
             return $resultado['LOGIN_PUJADOR'];
         }
 
         function add(){
             $sql="INSERT INTO PUJA(`DINERO`,`LOGIN_PUJADOR`,`ID_SUBASTA`) VALUES($this->dinero,'$this->login_pujador',$this->id_subasta)";
-            var_dump($sql);
+           
             if($this->mysqli->query($sql)){
                 return 'Puja exitosa';
             }else{

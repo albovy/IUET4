@@ -71,7 +71,7 @@
             $this->login_admin = !empty($this->login_admin) ? "'$this->login_admin'" : "NULL";
             //Se inserta el usuario en la base de datos y se guarda el resultado en la variable sql
             $sql = "INSERT INTO SUBASTA VALUES(NULL, '$this->tipo', NULL, $this->minIncremento, '$this->fech_inicio', '$this->fech_fin', '$this->estado', '$this->login_subastador', $this->login_admin)";
-            var_dump($sql);
+            
             //Se comprueba si se ha insertado correctamente el usuario y devuelve un mensaje con el resultado
             if($this->mysqli->query($sql)){
                 $id = $this->mysqli->insert_id;
@@ -137,7 +137,7 @@
             $fichero = '../Files/'. $this->login_subastador .'/Subastas/'. $id.'/'.$this->informacion['name'];
             
             $directorio = '../Files/'. $this->login_subastador .'/Subastas/'. $id;
-            var_dump($directorio);
+            
             //Si el directorio no existe, se crea
             if(!file_exists($directorio)){
                 mkdir($directorio,0777,true);
@@ -293,14 +293,16 @@
 
                 case 'FINALIZADA':
                 
-                
+                    var_dump("hola");
                     $pujador = new Pujas_Model(null,null,null,$sub['ID']);
                     $pujador = $pujador->getLoginPujadorMaxPuj();
+                    
                     $usuario = new Usuario_Model($pujador);
                     $usuario = $usuario->encontrarPorLogin();
                     
+                    
                     $this->notificar('Has ganado la subasta',$pujador,$sub['ID']);
-                    $this->notificar('Contacta con el email del pujador'.$usuario->getEmail(),$sub['LOGIN_SUBASTADOR'],$sub['ID']);
+                    $this->notificar('Contacta con el email del pujador '.$usuario->getEmail(),$sub['LOGIN_SUBASTADOR'],$sub['ID']);
 
                 break;
                     
@@ -318,6 +320,7 @@
 
         function notificar($estado,$loginPujador,$id){
             $notificacion = new Notificacion_Model($estado,$loginPujador,$id);
+            
             $notificacion = $notificacion->add();
         }
         function cambiarEstado($estado,$subasta){
