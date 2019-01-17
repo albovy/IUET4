@@ -8,7 +8,7 @@
         }
 
         function render(){
-            include '../View/Header.php';
+            include '../Views/Header.php';
         //Tabla que muestra los datos a eliminar antes de eliminarlos
 ?>
 <br>
@@ -24,46 +24,48 @@
                         </tr>
                         <tr>
                             <th scope="row"><?=$strings['DNI']?></th>
-                            <td><?= $this->participacion->getDNI() ?></td>
+                            <td><?= $this->usuario->getDNI() ?></td>
                         </tr>
                         <tr>
                             <th scope="row"><?=$strings['Dirección']?></th>
-                            <td><?= $this->participacion->getDir() ?></td>
+                            <td><?= $this->usuario->getDir() ?></td>
                         </tr>
                         <tr>
                             <th scope="row"><?=$strings['Nombre']?></th>
-                            <td><?= $this->participacion->getNombre() ?></td>
+                            <td><?= $this->usuario->getNombre() ?></td>
                         </tr>
                         <tr>
                             <th scope="row"><?=$strings['Apellidos']?></th>
-                            <td><?= $this->participacion->getApellidos() ?></td>
+                            <td><?= $this->usuario->getApellidos() ?></td>
                         </tr>
                         <tr>
                             <th scope="row"><?=$strings['Avatar']?></th>
-                            <td><?= $this->participacion->getAvatar() ?></td>
+                            <td><?= $this->usuario->getAvatar() ?></td>
                         </tr>
                         <tr>
                             <th scope="row"><?=$strings['Login']?></th>
-                            <td><?= $this->participacion->getLogin() ?></td>
+                            <td><?= $this->usuario->getLogin() ?></td>
                         </tr>
                         <tr>
                             <th scope="row"><?=$strings['Rol']?></th>
-                            <td><?= $this->participacion->getRol() ?></td>
+                            <td><?= $this->usuario->getRol() ?></td>
                         </tr>
                         <tr>
                             <th scope="row"><?=$strings['Estado']?></th>
-                            <td><?= $this->participacion->getEstado() ?></td>
+                            <td><?= $strings[$this->usuario->getEstado()] ?></td>
                         </tr>
                         <tr>
                             <th scope="row"><?=$strings['Administrador']?></th>
-                            <td><?= $this->participacion->getAdmin() ?></td>
+                            <td><?= $this->usuario->getAdmin() ?></td>
                         </tr>
                     </tbody>
 			</table>
-            <!-- Este botón cancela el borrado de los datos mostrados y redirige a la página principal !-->
-            <a href="../index.php"><i class="material-icons">cancel_presentation</i></a>
-			<!-- Este botón confirmaría el borrado de los datos mostrados. !-->
-            <a href=""><i class="material-icons">delete</i></a>
+            <a href="../index.php" class="buttonTablaDeleteCancelar"><i class="material-icons">clear</i></a>
+		<a href="../Controller/Usuario_Controller.php?action=delete&login=<?=$this->usuario->getLogin()?>&delete=si" class="buttonTablaDeleteBorrar" ><i class="material-icons">delete</i></a>
+
+
+
+
 
 <?php
         }

@@ -163,9 +163,18 @@ switch($action){
                 if($borrar == 'Login incorrecto'){
                     new Message($borrar,'../index.php');
                 }else{
+                if(!isset($_GET['delete'])){
+                    new deleteUser($borrar);
+                }else{
+                
+                if($borrar == 'Login incorrecto'){
+                    new Message($borrar,'../index.php');
+                }else{
                     $borrar->delete();
                     new Message('Borrado', '../index.php');
                 }
+                }
+            }
             }
         }
 

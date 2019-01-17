@@ -41,7 +41,7 @@ class ShowAll_Usuarios_View{
 						<td class="tdShowAll"><?= $usuario->getNombre() ?></td>
 						<td class="tdShowAll"><?= $usuario->getApellidos() ?></td>
                         <td class="tdShowAll"><?= $usuario->getLogin() ?></td>
-						<td class="tdShowAll"><?= $usuario->getEstado() ?></td>
+						<td class="tdShowAll"><?= $strings[$usuario->getEstado()] ?></td>
 						
 						<td class="tdShowAll">
                         <?php
@@ -52,7 +52,7 @@ class ShowAll_Usuarios_View{
                             }
                         ?>
                         <a href="../Controller/Usuario_Controller.php?action=edit&login=<?=$usuario->getLogin()?>"><i class="material-icons tdShowIcons">create</i></a>
-						<a href="../Controller/Usuario_Controller.php?action=showcurrent&login=<?=$usuario->getLogin()?>"><i class="material-icons tdShowIcons">visibility</i></a>
+						
 						<a href="../Controller/Usuario_Controller.php?action=delete&login=<?=$usuario->getLogin()?>"><i class="material-icons tdShowIcons">delete</i></a>
                         </td>
 						<tr>

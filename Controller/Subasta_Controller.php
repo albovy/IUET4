@@ -71,17 +71,19 @@ switch($action){
             
            $subasta = new Subasta_Model($_GET['id']);
            $subasta = $subasta->encontrarPorId();
+           $informacion = $subasta->getInformacion();
+           $estado = $subasta->getEstado();
            if($subasta == 'id incorrecto'){
                 new Message($subasta,'../index.php');
            }else{
                
                 if($subasta->getLogin_subastador() == $_SESSION['login'] || $_SESSION['rol'] == "ADMINISTRADOR"){
                     if(!$_POST){
-                        var_dump("hola");
+                        
                         new Edit_Subastas_View($subasta);
                     }else{
-                        $subasta = new Subasta_Model(NULL, $_POST['tipo'], $_FILES['informacion'], $_POST['incremento'], 
-                        $_POST['fech_inicio'], $_POST['fech_fin'], 'PENDIENTE', $admin->getLogin(),NULL); 
+                        $subasta = new Subasta_Model($subasta->getID(), $_POST['tipo'],$informacion, $_POST['incremento'], 
+                        $_POST['fech_inicio'], $_POST['fech_fin'],$estado,$subasta->getLogin_subastador(), $subasta->getLogin_Admin()); 
                         $respuesta = $subasta->edit();
                         new Message($respuesta, '../index.php');
                     }

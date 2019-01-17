@@ -71,11 +71,17 @@ array(
     'Mensaje' => 'Message',
     'Tus notificaciones' => 'Your notifications',
     'Buscar subastas' => 'Search auctions',
-    'Pendiente' => 'Pending',
-    'Aprobada' => 'Approveed',
-    'Iniciada' => 'Initiated',
-    'Finalizada' => 'Finished',
-    'Subasta' => 'Auction'
+    'Subasta' => 'Auction',
+    'INICIADA' => 'Initiated',
+    'APROBADA' => 'Approved',
+    'FINALIZADA' => 'Finished',
+    'PENDIENTE' => 'Pending',
+    'CREADO' => 'Created',
+    'SI' => 'YES',
+    'NO' => 'NO',
+    '¿Seguro que quiere borrar los datos?' => 'Are you sure?',
+    'Borrar' => 'Delete'
+
 )
 ;
 ?>

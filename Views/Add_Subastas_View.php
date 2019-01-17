@@ -14,7 +14,7 @@
         
             <label for="tipo"><?= $strings['Tipo de subasta'] ?></label>
             <select id="tipo" name="tipo">
-                <option value=""><?= $strings['-selecciona-'] ?></option>
+                
                 <option value="CIEGA"><?= $strings['Ciega'] ?></option>
                 <option value="NO CIEGA"><?= $strings['No ciega'] ?></option>
             </select>

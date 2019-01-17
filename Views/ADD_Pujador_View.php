@@ -27,7 +27,7 @@
 				</tr>
 				<tr>
 					<td class="tdColDeleteOrTupla"><?= $strings['Estado'] ?>:</td>
-					<td class="tdDeleteOrTupla"><?= $this->subasta->getEstado()?></td>
+					<td class="tdDeleteOrTupla"><?= $strings[$this->subasta->getEstado()]?></td>
 				</tr>
 				<tr>
 					<td class="tdColDeleteOrTupla"><?= $strings['Incremento mínimo']?>:</td>

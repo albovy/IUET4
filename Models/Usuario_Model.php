@@ -166,6 +166,7 @@
 
             $sql = "DELETE FROM USUARIO
                     WHERE `LOGIN` = '$this->login' OR `dni`= '$this->dni'";
+                    
 
             if($this->mysqli->query($sql)){
                 $this->borrarDirectorio($dirAvatar);
@@ -194,7 +195,7 @@
                  SET `PASSWORD` = '$this->contraseña', `EMAIL` = '$this->email', `DNI` = '$this->dni', `DIRECCION` = '$this->direccion',`NOMBRE` = '$this->nombre'
                  ,`APELLIDOS` = '$this->apellidos', `AVATAR` = '$avatar'
                  WHERE `LOGIN` = '$this->login'";
-                 var_dump($sql);
+                 
 
             if(!$this->mysqli->query($sql)){
                 return "Error editando";

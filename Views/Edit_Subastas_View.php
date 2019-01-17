@@ -31,8 +31,7 @@
             <?php
                 }
             ?>
-        <label for="informacion"><?= $strings['Información'] ?></label>
-        <input type="file" id="informacion" name="informacion">
+
         <label for="incremento"><?= $strings['Incremento mínimo'] ?></label>
         <input type="number" id="incremento" name="incremento" value="<?=$this->subasta->getMinIncremento()?>">
         <label for="fech_inicio"><?= $strings['Fecha inicio'] ?></label>

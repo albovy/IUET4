@@ -44,7 +44,7 @@
         function add(){
             
             $sql="INSERT INTO NOTIFICACION VALUES('$this->mensaje','$this->login',$this->id)";
-            var_dump($sql);
+            
             
             if($this->mysqli->query($sql)){
 

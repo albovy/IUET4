@@ -86,27 +86,21 @@
        }
 
        function edit(){
-        if(isset($this->informacion['name'])){
-            $this->borrarFichero('../Files/'. $this->login_subastador .'/Subastas/'.$id.'/'.$this->informacion['name']);
-            $informacion = $this->informacion();
-        }
-        else{
-            $informacion = $this->informacion;
-        }
-           $this->login_admin = !empty($this->login_admin) ? "'$this->login_admin'" : "NULL";
-           $this->id = !empty($this->id) ? "'$this->id'" : "NULL";
 
-           $sql = "UPDATE LOTERIAIU
-           SET `ID` = '$this->id',
-           `TIPO` = '$this->apellidos',
-           `INFORMACION` = '$informacion',
+           $this->login_admin = !empty($this->login_admin) ? "'$this->login_admin'" : "NULL";
+
+           $sql = "UPDATE SUBASTA
+           SET 
+           `TIPO` = '$this->tipo',
+           `INFORMACION` = '$this->informacion',
            `INCREMENTO` = '$this->minIncremento',
            `FECH_INICIO` = '$this->fech_inicio',
            `FECH_FIN` = '$this->fech_fin',
            `ESTADO` = '$this->estado',
            `LOGIN_SUBASTADOR` = '$this->login_subastador',
-           `LOGIN_ADMIN` = '$this->login_admin'
-           WHERE `ID` = '$this->id'";
+           `LOGIN_ADMIN` = $this->login_admin
+           WHERE `ID` = $this->id";
+           
 
             if(!$this->mysqli->query($sql)){
                 return "Error editando";
@@ -118,7 +112,7 @@
 
         function borrarFichero($fichero) {
             unlink($fichero);
-            /*$ficheros = glob($ruta . '/*');
+            $ficheros = glob($ruta . '/*');
             foreach ($ficheros as $fichero) {
                 if(is_dir($fichero)){
                     borrarDirectorio($fichero);
@@ -127,7 +121,7 @@
                     unlink($fichero);
                 }
             }
-            rmdir($ruta);*/
+            rmdir($ruta);
             return;
        }
 
@@ -293,7 +287,7 @@
 
                 case 'FINALIZADA':
                 
-                    var_dump("hola");
+                    v
                     $pujador = new Pujas_Model(null,null,null,$sub['ID']);
                     $pujador = $pujador->getLoginPujadorMaxPuj();
                     
