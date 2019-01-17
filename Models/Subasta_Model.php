@@ -287,9 +287,10 @@
 
                 case 'FINALIZADA':
                 
-                    v
+                    
                     $pujador = new Pujas_Model(null,null,null,$sub['ID']);
                     $pujador = $pujador->getLoginPujadorMaxPuj();
+                    if($pujador!= NULL){
                     
                     $usuario = new Usuario_Model($pujador);
                     $usuario = $usuario->encontrarPorLogin();
@@ -297,6 +298,9 @@
                     
                     $this->notificar('Has ganado la subasta',$pujador,$sub['ID']);
                     $this->notificar('Contacta con el email del pujador '.$usuario->getEmail(),$sub['LOGIN_SUBASTADOR'],$sub['ID']);
+                    }else{
+                        $this->notificar('No han pujado',$sub['LOGIN_SUBASTADOR'],$sub['ID']);
+                    }
 
                 break;
                     

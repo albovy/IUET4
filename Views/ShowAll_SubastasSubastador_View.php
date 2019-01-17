@@ -38,8 +38,8 @@ class ShowAll_Subastador_View{
 						<tr>
 						
 						<td class="tdShowAll"><?= $subasta->getLogin_subastador() ?></td>
-						<td class="tdShowAll"><?= $subasta->getInformacion() ?></td>
-						<td class="tdShowAll"><?= $subasta->getEstado() ?></td>
+						<td class="tdShowAll"><a href="<?= $subasta->getInformacion() ?>"><?= $subasta->getInformacion() ?></a></td>
+						<td class="tdShowAll"><?= $strings[$subasta->getEstado()] ?></td>
 						<td class="tdShowAll"><?= $subasta->getFech_inicio() ?></td>
 						<td class="tdShowAll"><?= $subasta->getFech_fin() ?></td>
 						

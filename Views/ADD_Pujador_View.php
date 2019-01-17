@@ -47,8 +47,15 @@
 					<td class="tdColDeleteOrTupla"><?= $strings['Pujar'] ?>:</td>
 					<td class="tdDeleteOrTupla">
                         <form action="../Controller/Puja_Controller.php?id=<?=$this->subasta->getID()?>" method='POST'>
-                        <input type="text" id="puja" name="puja">
-                        <button  class="buttonGuardar" onclick=""><i class="material-icons" o>check_circle</i></button>
+						<?php
+						if($this->subasta->getTipo() != "CIEGA"){
+							?>
+						<input type="text" id="puja" name="puja" onblur="comprobarPuja(this.id,<?= $this->subasta->getMinIncremento()?>,<?=$this->pujaMaxima?>)">
+						<?php
+						}else{
+							
+						}?>
+                        <button id="pujaboton" onclick="" class="buttonGuardar" disabled><i class="material-icons" o>check_circle</i></button>
                         </form>
                     
                     </td>

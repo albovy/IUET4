@@ -17,14 +17,14 @@
             <?php
                 if($this->subasta->getTipo() == $strings['Ciega']){
             ?>
-                <option value=""><?= $strings['-selecciona-'] ?></option>
+                
                 <option value="CIEGA" selected><?= $strings['Ciega'] ?></option>
                 <option value="NO CIEGA"><?= $strings['No ciega'] ?></option>
             </select>
             <?php
                 }else{
             ?>
-            <option value=""><?= $strings['-selecciona-'] ?></option>
+            
                 <option value="CIEGA" ><?= $strings['Ciega'] ?></option>
                 <option value="NO CIEGA" selected><?= $strings['No ciega'] ?></option>
             </select>
@@ -33,7 +33,7 @@
             ?>
 
         <label for="incremento"><?= $strings['Incremento mínimo'] ?></label>
-        <input type="number" id="incremento" name="incremento" value="<?=$this->subasta->getMinIncremento()?>">
+        <input type="number" id="incremento" name="incremento" value="<?=$this->subasta->getMinIncremento()?>" onblur="comprobarEntero(this.id, 0, 1000000000)">
         <label for="fech_inicio"><?= $strings['Fecha inicio'] ?></label>
         <input type="text" id="fech_inicio" name="fech_inicio"  value="<?=$this->subasta->getFech_inicio()?>" class="tcal" value="" readonly>
         <div class="login">
@@ -42,7 +42,7 @@
             </div>
 
         <a href='../index.php' class="registro"><?= $strings['Volver'] ?></a>
-		<button  class="buttonGuardar" onclick=""><i class="material-icons" o>check_circle</i></button>
+		<button  onclick="return editSubasta()" class="buttonGuardar" onclick=""><i class="material-icons" o>check_circle</i></button>
         </form>
 <?php
         }
