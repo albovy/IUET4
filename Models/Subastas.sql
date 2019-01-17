@@ -83,3 +83,6 @@ CREATE TABLE IF NOT EXISTS NOTIFICACION(
 INSERT INTO USUARIO VALUES('admin','admin','','','','','','','ADMINISTRADOR','CREADO',NULL);
 INSERT INTO USUARIO VALUES('pujador','pujador','','','','','','../Files/pujador/Avatar/imagen.jpg','PUJADOR','CREADO','admin');
 INSERT INTO USUARIO VALUES('subastador','subastador','','','','','','../Files/subastador/Avatar/imagen.jpg','PUJADOR','CREADO','admin');
+
+
+INSERT INTO SUBASTA VALUES(NULL,'NO CIEGA','../Files/subastador/Subastas/1/texto.txt',100,'2019-01-16','2019-01-31','APROBADA','subastador','admin');
