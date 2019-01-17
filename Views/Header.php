@@ -39,38 +39,8 @@
 				
                 <button role="link" onclick="window.location='../Functions/Desconectar.php'"><i class="material-icons">power_settings_new</i></button>
                 <a href="../Controller/Usuario_Controller.php?action=edit&login=<?=$_SESSION['login']?>" class="enlaceHead"><i class="material-icons enlaceIconUser">person</i><?php echo $_SESSION['login']; ?></a>
-				<a href="../Controller/Notificacion_Controller.php"><?=$strings['Tus notificaciones']?></a>
-
-
-            <?php
-				switch($_SESSION['rol']){
-					case 'ADMINISTRADOR':
-						?>
-						<a href="../Controller/Usuario_Controller.php?action=listUsuarios"><?= $strings['Listar Usuarios'] ?></a>
-						<a href="../Controller/Subasta_Controller.php"><?= $strings['Gestionar subastas'] ?></a>
-						<a href="../Controller/Subasta_Controller.php?action=search"><?= $strings['Buscar subastas'] ?></a>
-						<?php
-					break;
-
-					case 'SUBASTADOR':
-						?>
-						<a href="../Controller/Subasta_Controller.php?action=add"><?= $strings['Crear Subasta'] ?></a>
-						<a href="../Controller/Subasta_Controller.php"><?= $strings['Tus subastas'] ?></a>
-						
-						<?php
-					break;
-					default:
-						?>
-						<a href="../Controller/Subasta_Controller.php"><?= $strings['Pujar'] ?></a>
-						<a href="../Controller/Puja_Controller.php?action=historial"><?= $strings['Historial'] ?></a>
-						<a href="../Controller/Subasta_Controller.php?action=search"><?= $strings['Buscar subastas'] ?></a>
-						<?php
-					break;
-				}
-            }
-            ?>
-			
-			<div class="dropdown">
+				
+				<div class="dropdown">
 				<button class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="idioma">
 					<i class="material-icons">language</i>
 				</button>
@@ -82,5 +52,41 @@
 					<a href="../Functions/CambioIdioma.php?idioma=GALLAECIAN" class="dropdown-item"><?= $strings['Gallego'] ?></a>
 				</div>
 			</div>
+
+			<nav><ul>
+				<li><a href="../Controller/Notificacion_Controller.php"><?=$strings['Tus notificaciones']?></a></li>
+			
+            <?php
+				switch($_SESSION['rol']){
+					case 'ADMINISTRADOR':
+						?>
+						<li><a href="../Controller/Usuario_Controller.php?action=listUsuarios"><?= $strings['Listar Usuarios'] ?></a></li>
+						<li><a href="../Controller/Subasta_Controller.php"><?= $strings['Gestionar subastas'] ?></a></li>
+						<li><a href="../Controller/Subasta_Controller.php?action=search"><?= $strings['Buscar subastas'] ?></a></li>
+						<?php
+					break;
+
+					case 'SUBASTADOR':
+						?>
+						<li><a href="../Controller/Subasta_Controller.php?action=add"><?= $strings['Crear Subasta'] ?></a></li>
+						<li><a href="../Controller/Subasta_Controller.php"><?= $strings['Tus subastas'] ?></a></li>
+						
+						<?php
+					break;
+					default:
+						?>
+						<li><a href="../Controller/Subasta_Controller.php"><?= $strings['Pujar'] ?></a></li>
+						<li><a href="../Controller/Puja_Controller.php?action=historial"><?= $strings['Historial'] ?></a></li>
+						<li><a href="../Controller/Subasta_Controller.php?action=search"><?= $strings['Buscar subastas'] ?></a></li>
+						<?php
+					break;
+				}
+            }
+            ?>
+			</ul>
+			
+			</nav>
+			
+			
 
 	</header>

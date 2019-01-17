@@ -24,9 +24,10 @@
             <input type="number" id="incremento" name="incremento">
             <label for="fech_inicio"><?= $strings['Fecha inicio'] ?></label>
             <input type="text" id="dateAdd" name="fech_inicio" class="tcal" value="" readonly>
+            <div class ="login">
             <label for="fech_fin"><?= $strings['Fecha fin'] ?></label>
             <input type="text" id="dateAdd" name="fech_fin" class="tcal" value="" readonly>
-            
+            </div>
         
             <a href='../index.php' class="registro"><?= $strings['Volver'] ?></a>
 			<button  class="buttonGuardar" onclick=""><i class="material-icons" o>check_circle</i></button>

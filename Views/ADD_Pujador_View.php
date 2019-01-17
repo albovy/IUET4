@@ -31,7 +31,7 @@
 				</tr>
 				<tr>
 					<td class="tdColDeleteOrTupla"><?= $strings['Incremento mínimo']?>:</td>
-					<td class="tdDeleteOrTupla"><?= $this->subasta-> getMinIncremento()?></td>
+					<td class="tdDeleteOrTupla"><?= $this->subasta->getMinIncremento()?></td>
 				</tr>
                 <?php
                     if($this->subasta->getTipo() != "CIEGA"){

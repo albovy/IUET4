@@ -1,6 +1,9 @@
 <?php
 
     include '../Models/Notificacion_Model.php';
+    
+    
+    
     class Subasta_Model{
         var $id;
         var $tipo;
@@ -277,6 +280,8 @@
                         
                 break;
                 case 'INICIADA':
+                
+                
                     if($hoy < $fecha_subasta_inicio){
                         $respuesta = $this->cambiarEstado('APROBADA',$sub);
                     }
@@ -285,14 +290,35 @@
                     }
                     
                 break;
+
+                case 'FINALIZADA':
+                
+                
+                    $pujador = new Pujas_Model(null,null,null,$sub['ID']);
+                    $pujador = $pujador->getLoginPujadorMaxPuj();
+                    $usuario = new Usuario_Model($pujador);
+                    $usuario = $usuario->encontrarPorLogin();
+                    
+                    $this->notificar('Has ganado la subasta',$pujador,$sub['ID']);
+                    $this->notificar('Contacta con el email del pujador'.$usuario->getEmail(),$sub['LOGIN_SUBASTADOR'],$sub['ID']);
+
+                break;
+                    
                 
                 
                 
 
             }
+
+
             
 
 
+        }
+
+        function notificar($estado,$loginPujador,$id){
+            $notificacion = new Notificacion_Model($estado,$loginPujador,$id);
+            $notificacion = $notificacion->add();
         }
         function cambiarEstado($estado,$subasta){
             
@@ -306,7 +332,7 @@
             }else{
                 
                 $notificacion = $notificacion->add();
-                var_dump($notificacion);
+                
                 if($notificacion == "Añadida"){
                     
                     return "Editado";

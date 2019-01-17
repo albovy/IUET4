@@ -104,7 +104,6 @@ header button{
 
 
 
-
 /*BODY*/
 body{
     font-family: 'K2D', sans-serif;
@@ -153,7 +152,9 @@ a:hover {
 
 
 /*FORMULARIOS*/
-
+form{
+    text-align: center!important;
+}
 
 .formAñadir, .formBuscar, .formEditar{
     border-radius: 5px;
@@ -244,7 +245,7 @@ input{
 /*BOTONES, ENLACES Y ICONOS*/
 
 .registro{
-    margin-left: 30%;
+    margin-left: 4%;
 }
 .buttonGuardar {
     width: 4%;

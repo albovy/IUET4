@@ -74,7 +74,8 @@ array(
     'Pendiente' => 'Pendente',
     'Aprobada' => 'Aprobada',
     'Iniciada' => 'Iniciada',
-    'Finalizada' => 'Finalizada'
+    'Finalizada' => 'Finalizada',
+    'Subasta' => 'Subasta'
 
 
 )

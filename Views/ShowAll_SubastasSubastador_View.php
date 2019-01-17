@@ -43,9 +43,9 @@ class ShowAll_Subastador_View{
 						<td class="tdShowAll"><?= $subasta->getFech_inicio() ?></td>
 						<td class="tdShowAll"><?= $subasta->getFech_fin() ?></td>
 						
-						<td class="tdShowAll"><a href="../Controller/Subasta_Controller.php?action=edit&id=<?=$subasta->getID()?>"><i class="material-icons tdShowIcons">create</i></a>
+						<td class="tdShowAll"></a>
 						<a href="../Controller/Subasta_Controller.php?action=showcurrent&id=<?=$subasta->getID()?>"><i class="material-icons tdShowIcons">visibility</i></a>
-						<a href="../Controller/Subasta_Controller.php?action=delete&id=<?=$subasta->getID()?>"><i class="material-icons tdShowIcons">delete</i></a></td>
+						</td>
 						<tr>
 <?php
 					}

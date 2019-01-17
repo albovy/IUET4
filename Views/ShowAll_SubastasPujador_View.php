@@ -44,7 +44,8 @@
                         <?php
                             if($subasta->getEstado() == 'INICIADA'){
                                 ?>
-                        <a href="../Controller/Puja_Controller.php?action=puja&id=<?=$subasta->getID()?>">Pujar</a>
+                        <a href="../Controller/Puja_Controller.php?action=puja&id=<?=$subasta->getID()?>"><?=$strings['Pujar']?></a>
+						<a href="../Controller/Subasta_Controller.php?action=showcurrent&id=<?=$subasta->getID()?>"><i class="material-icons tdShowIcons">visibility</i></a>
                         <?php
                             }
                             ?>

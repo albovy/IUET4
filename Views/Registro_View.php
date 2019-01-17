@@ -26,8 +26,7 @@
             <input type="file" id="avatar" name="avatar">
             <label for="login"><?= $strings['Login'] ?></label>
             <input type="text" id="login" name="login">
-            <label for="contraseña"><?= $strings['Contraseña'] ?></label>
-            <input type="password" id="contraseña" name="contraseña">
+            <div class ="login">
             <label for="rol"><?= $strings['Rol'] ?></label>
             <select id="rol" name="rol">
             <?php if($this->rol == 'ADMINISTRADOR'){
@@ -39,6 +38,11 @@
                 <option value="Subastador"><?= $strings['Subastador'] ?></option>
                 <option value="Pujador"><?= $strings['Pujador'] ?></option>
             </select>
+            </div>
+            <div class ="login">
+            <label for="contraseña"><?= $strings['Contraseña'] ?></label>
+            <input type="password" id="contraseña" name="contraseña">
+            </div>
         
             <a href='../index.php' class="registro"><?= $strings['Volver'] ?></a>
 			<button  class="buttonGuardar" onclick=""><i class="material-icons" o>check_circle</i></button>

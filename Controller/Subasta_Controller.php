@@ -4,12 +4,15 @@
 include "../Functions/Authentication.php";
 include '../Models/Usuario_Model.php';
 include '../Models/Subasta_Model.php';
+include '../Models/Pujas_Model.php';
 include '../Views/ShowAll_SubastasAdmin_View.php';
 include '../Views/ShowAll_SubastasSubastador_View.php';
 include '../Views/ShowAll_SubastasPujador_View.php';
 include '../Views/MESSAGE_View.php';
 include '../Views/Add_Subastas_View.php';
 include '../Views/Search_Subastas_View.php';
+include '../Views/ShowCurrent_View.php';
+include '../Views/Edit_Subastas_View.php';
 
 
 //inicio de sesion
@@ -24,6 +27,7 @@ if(!isset($_GET['action'])){
 } else {
     $action = $_GET['action'];
 }
+
 
 //dependiendo del valor
 switch($action){
@@ -64,13 +68,16 @@ switch($action){
             
             new Message('id incorrecto', '../index.php');
         }else{
+            
            $subasta = new Subasta_Model($_GET['id']);
            $subasta = $subasta->encontrarPorId();
            if($subasta == 'id incorrecto'){
                 new Message($subasta,'../index.php');
            }else{
+               
                 if($subasta->getLogin_subastador() == $_SESSION['login'] || $_SESSION['rol'] == "ADMINISTRADOR"){
                     if(!$_POST){
+                        var_dump("hola");
                         new Edit_Subastas_View($subasta);
                     }else{
                         $subasta = new Subasta_Model(NULL, $_POST['tipo'], $_FILES['informacion'], $_POST['incremento'], 
@@ -122,6 +129,30 @@ switch($action){
     
 
     break;
+
+    case 'showcurrent':
+        if(!isset($_GET['id'])){
+            new Message('Error','../index.php');
+        }else{
+            
+            $pujador = new Pujas_Model(null,null,null,$_GET['id']);
+            $pujador = $pujador->getLoginPujadorMaxPuj();
+            
+            $usuario = new Usuario_Model($pujador);
+            $usuario = $usuario->encontrarPorLogin();
+            
+
+            $subasta = new Subasta_Model($_GET['id']);
+           $subasta = $subasta->encontrarPorId();
+           if($subasta == 'id incorrecto'){
+                new Message($subasta,'../index.php');
+           }else{
+            
+               new ShowCurrent($subasta,$usuario);
+           }
+
+        }
+        break;
         
     
     
