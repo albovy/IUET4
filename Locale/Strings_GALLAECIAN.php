@@ -80,6 +80,7 @@ array(
     'SI' => 'SI',
     'NO' => 'NO',
     '¿Seguro que quiere borrar los datos?' => '¿Seguro que quere borrar os datos?',
+    'INICIADA' => 'Iniciada',
     'Borrar' => 'Borrar'
 
 

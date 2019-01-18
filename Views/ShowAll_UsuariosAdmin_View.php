@@ -22,7 +22,7 @@ class ShowAll_Usuarios_View{
 
                 <div class="buscarañadir">
 				    <a href="../Controller/Usuario_Controller.php?action=register"><i class="material-icons add" >person_add</i></a>
-				    <a href="../Controller/Usuario_Controller.php?action=search" ><i class="material-icons search">search</i></a>
+				    
 			    </div>
 				<table class="table">
 				<thead>

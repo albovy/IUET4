@@ -51,11 +51,15 @@
 						if($this->subasta->getTipo() != "CIEGA"){
 							?>
 						<input type="text" id="puja" name="puja" onblur="comprobarPuja(this.id,<?= $this->subasta->getMinIncremento()?>,<?=$this->pujaMaxima?>)">
+						<button id="pujaboton1" onclick="" class="buttonGuardar" disabled><i class="material-icons" o>check_circle</i></button>
 						<?php
 						}else{
-							
+							?>
+						<input type="text" id="puja2" name="puja">
+						<button id="pujaboton2" onclick="" class="buttonGuardar" ><i class="material-icons" o>check_circle</i></button>
+						<?php
 						}?>
-                        <button id="pujaboton" onclick="" class="buttonGuardar" disabled><i class="material-icons" o>check_circle</i></button>
+                        
                         </form>
                     
                     </td>

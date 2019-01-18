@@ -194,13 +194,13 @@ function validateFileNotEmpty(campo){//validacion de si el resguardo está vacio
 }
 
 function comprobarPuja(campo,minIncremento,pujaMaxima){
-	document.getElementById("pujaboton").disabled=true;
+	document.getElementById("pujaboton1").disabled=true;
 	var valor = document.getElementById(campo).value;
 	if(valor < minIncremento+pujaMaxima){
 		document.getElementById(campo).style.borderColor="red"; //pinta el input de rojo
 		return false;
 	}else{
-		document.getElementById("pujaboton").disabled=false;
+		document.getElementById("pujaboton1").disabled=false;
 		document.getElementById(campo).style.borderColor="green"; //pinta el input de rojo
 		return true;
 	}

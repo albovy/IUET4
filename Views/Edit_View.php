@@ -56,7 +56,7 @@
 		
 
 <?php
-            include '../Views/Footer.php';
+           
         }
 
 

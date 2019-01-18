@@ -62,7 +62,7 @@ array(
     'Gestionar subastas' => 'Gestionar subastas',
     'Crear Subasta' => 'Crear Subasta',
     'Tus subastas' => 'Tus subastas',
-    'Puja exitosa' => 'Puxa exitosa',
+    'Puja exitosa' => 'Puja exitosa',
     'Error en la puja' => 'Error en la puja',
     'No hiciste pujas' => 'No hiciste pujas',
     'Historial' => 'Historial',
